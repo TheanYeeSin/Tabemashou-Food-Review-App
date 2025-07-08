@@ -6,7 +6,7 @@ import 'package:foodreviewapp/models/review.dart';
 import 'package:foodreviewapp/database/database_service.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:foodreviewapp/widgets/review_search_delegate.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:foodreviewapp/utils/display.dart';
 
@@ -76,8 +76,9 @@ class _ReviewListingScreenState extends State<ReviewListingScreen> {
     int selectedDisplayMode = context.watch<DisplayManager>().reviewDisplayMode;
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text(widget.titleValue ?? AppLocalizations.of(context)!.allTitle),
+        title: Text(
+          widget.titleValue ?? AppLocalizations.of(context)!.allTitle,
+        ),
         actions: [
           IconButton(
             onPressed: () {
@@ -156,56 +157,56 @@ class _ReviewListingScreenState extends State<ReviewListingScreen> {
                         ),
                         selectedDisplayMode != 2
                             ? SliverList(
-                                delegate: SliverChildBuilderDelegate(
-                                  (BuildContext context, int index) {
-                                    return ReviewWidget(
-                                      onPressed: () async {
-                                        await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                ReviewDetailsScreen(
-                                              reviewId:
-                                                  snapshot.data![index].id!,
-                                            ),
-                                          ),
-                                        );
-                                        setState(() {});
-                                      },
-                                      review: snapshot.data![index],
-                                    );
-                                  },
-                                  childCount: snapshot.data!.length,
-                                ),
+                                delegate: SliverChildBuilderDelegate((
+                                  BuildContext context,
+                                  int index,
+                                ) {
+                                  return ReviewWidget(
+                                    onPressed: () async {
+                                      await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              ReviewDetailsScreen(
+                                                reviewId:
+                                                    snapshot.data![index].id!,
+                                              ),
+                                        ),
+                                      );
+                                      setState(() {});
+                                    },
+                                    review: snapshot.data![index],
+                                  );
+                                }, childCount: snapshot.data!.length),
                               )
                             : SliverGrid(
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2, // Adjust as needed
-                                  mainAxisSpacing: 4,
-                                  crossAxisSpacing: 4,
-                                ),
-                                delegate: SliverChildBuilderDelegate(
-                                  (context, index) {
-                                    return ReviewWidget(
-                                      onPressed: () async {
-                                        await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                ReviewDetailsScreen(
-                                              reviewId:
-                                                  snapshot.data![index].id!,
-                                            ),
-                                          ),
-                                        );
-                                        setState(() {});
-                                      },
-                                      review: snapshot.data![index],
-                                    );
-                                  },
-                                  childCount: snapshot.data!.length,
-                                ),
+                                      crossAxisCount: 2, // Adjust as needed
+                                      mainAxisSpacing: 4,
+                                      crossAxisSpacing: 4,
+                                    ),
+                                delegate: SliverChildBuilderDelegate((
+                                  context,
+                                  index,
+                                ) {
+                                  return ReviewWidget(
+                                    onPressed: () async {
+                                      await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              ReviewDetailsScreen(
+                                                reviewId:
+                                                    snapshot.data![index].id!,
+                                              ),
+                                        ),
+                                      );
+                                      setState(() {});
+                                    },
+                                    review: snapshot.data![index],
+                                  );
+                                }, childCount: snapshot.data!.length),
                               ),
                       ],
                     );
@@ -238,8 +239,8 @@ class _ReviewListingScreenState extends State<ReviewListingScreen> {
     final isSelected = _selectedColumnName == columnName;
     final sortIcon = isSelected
         ? _sortAscending
-            ? Icons.arrow_upward
-            : Icons.arrow_downward
+              ? Icons.arrow_upward
+              : Icons.arrow_downward
         : null;
     return PopupMenuItem(
       value: columnName,

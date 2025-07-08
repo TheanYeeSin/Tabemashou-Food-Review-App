@@ -4,7 +4,7 @@ import 'package:foodreviewapp/widgets/category_setting_list_widget.dart';
 import 'package:foodreviewapp/database/database_service.dart';
 import 'package:foodreviewapp/screens/form_screens/category_form_screen.dart';
 import 'package:foodreviewapp/models/review.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 
 // Categories setting screen
 class CategoriesSettingScreen extends StatefulWidget {
@@ -22,8 +22,10 @@ class _CategoriesSettingScreenState extends State<CategoriesSettingScreen> {
   }
 
   Future<void> _deleteReviewCategory(String categoryName) async {
-    List<Review>? reviews =
-        await DatabaseService.getReviewsByColumn('categories', categoryName);
+    List<Review>? reviews = await DatabaseService.getReviewsByColumn(
+      'categories',
+      categoryName,
+    );
     for (Review review in reviews!) {
       review.categories?.remove(categoryName);
       await DatabaseService.updateReview(review);
@@ -57,13 +59,15 @@ class _CategoriesSettingScreenState extends State<CategoriesSettingScreen> {
                         return AlertDialog(
                           title: Center(
                             child: Text(
-                              AppLocalizations.of(context)!
-                                  .deleteCategoryDialogTitle,
+                              AppLocalizations.of(
+                                context,
+                              )!.deleteCategoryDialogTitle,
                             ),
                           ),
                           content: Text(
-                            AppLocalizations.of(context)!
-                                .deleteCategoryDialogMessage,
+                            AppLocalizations.of(
+                              context,
+                            )!.deleteCategoryDialogMessage,
                           ),
                           actions: [
                             ButtonBar(
@@ -73,9 +77,7 @@ class _CategoriesSettingScreenState extends State<CategoriesSettingScreen> {
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: Text(
-                                    AppLocalizations.of(context)!.no,
-                                  ),
+                                  child: Text(AppLocalizations.of(context)!.no),
                                 ),
                                 TextButton(
                                   onPressed: () async {
@@ -93,8 +95,9 @@ class _CategoriesSettingScreenState extends State<CategoriesSettingScreen> {
                                       SnackBar(
                                         content: Text(
                                           // ignore: use_build_context_synchronously
-                                          AppLocalizations.of(context)!
-                                              .categoryDeletedSnackbar,
+                                          AppLocalizations.of(
+                                            context,
+                                          )!.categoryDeletedSnackbar,
                                           style: const TextStyle(
                                             color: Colors.black,
                                           ),
@@ -121,9 +124,8 @@ class _CategoriesSettingScreenState extends State<CategoriesSettingScreen> {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CategoryFormScreen(
-                          category: snapshot.data![index],
-                        ),
+                        builder: (context) =>
+                            CategoryFormScreen(category: snapshot.data![index]),
                       ),
                     );
                     setState(() {});
@@ -142,9 +144,7 @@ class _CategoriesSettingScreenState extends State<CategoriesSettingScreen> {
         onPressed: () async {
           await Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: (context) => const CategoryFormScreen(),
-            ),
+            MaterialPageRoute(builder: (context) => const CategoryFormScreen()),
           );
           setState(() {});
         },

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodreviewapp/database/database_service.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 
 // Advanced setting screen
 class AdvancedSettingScreen extends StatefulWidget {
@@ -58,11 +58,10 @@ class _AdvancedSettingScreenState extends State<AdvancedSettingScreen> {
                                 SnackBar(
                                   content: Text(
                                     // ignore: use_build_context_synchronously
-                                    AppLocalizations.of(context)!
-                                        .deleteDatabaseSuccessSnackbar,
-                                    style: const TextStyle(
-                                      color: Colors.black,
-                                    ),
+                                    AppLocalizations.of(
+                                      context,
+                                    )!.deleteDatabaseSuccessSnackbar,
+                                    style: const TextStyle(color: Colors.black),
                                   ),
                                   backgroundColor: Colors.green[100],
                                 ),
@@ -70,9 +69,7 @@ class _AdvancedSettingScreenState extends State<AdvancedSettingScreen> {
                             },
                             child: Text(
                               AppLocalizations.of(context)!.yes,
-                              style: const TextStyle(
-                                color: Colors.redAccent,
-                              ),
+                              style: const TextStyle(color: Colors.redAccent),
                             ),
                           ),
                         ],

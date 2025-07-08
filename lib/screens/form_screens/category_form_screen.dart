@@ -1,7 +1,7 @@
 import 'package:foodreviewapp/widgets/form/category_form.dart';
 import 'package:flutter/material.dart';
 import 'package:foodreviewapp/models/category.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 
 // Category form screen
 class CategoryFormScreen extends StatefulWidget {

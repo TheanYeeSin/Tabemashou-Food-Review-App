@@ -5,7 +5,7 @@ import 'package:foodreviewapp/utils/style.dart';
 import 'package:foodreviewapp/utils/language.dart';
 import 'package:provider/provider.dart';
 import 'package:foodreviewapp/utils/notification.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'l10n/app_localizations.dart';
 import 'package:foodreviewapp/utils/display.dart';
 import 'package:foodreviewapp/screens/splash_screen.dart';
 

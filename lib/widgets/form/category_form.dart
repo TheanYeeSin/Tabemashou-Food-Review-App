@@ -7,7 +7,7 @@ import 'package:foodreviewapp/utils/validator.dart';
 import 'package:foodreviewapp/widgets/common/custom_form_field.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:foodreviewapp/models/review.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 import 'package:foodreviewapp/utils/image.dart';
 
 // Category Form
@@ -67,8 +67,10 @@ class _CategoryFormState extends State<CategoryForm> {
     String categoryName,
     String updatedCategoryName,
   ) async {
-    List<Review>? reviews =
-        await DatabaseService.getReviewsByColumn('categories', categoryName);
+    List<Review>? reviews = await DatabaseService.getReviewsByColumn(
+      'categories',
+      categoryName,
+    );
     for (Review review in reviews!) {
       review.categories?.remove(categoryName);
       review.categories?.add(updatedCategoryName);
@@ -99,8 +101,9 @@ class _CategoryFormState extends State<CategoryForm> {
               CustomFormField(
                 controller: categoryDescriptionController,
                 labelText: AppLocalizations.of(context)!.categoryDescription,
-                errorText:
-                    AppLocalizations.of(context)!.enterCategoryDescriptionError,
+                errorText: AppLocalizations.of(
+                  context,
+                )!.enterCategoryDescriptionError,
                 prefixIcon: const Icon(Icons.description_outlined),
                 readOnly: false,
                 validator: requiredString,
@@ -117,10 +120,12 @@ class _CategoryFormState extends State<CategoryForm> {
                             const SizedBox(width: 10),
                             Text(
                               widget.category == null
-                                  ? AppLocalizations.of(context)!
-                                      .uploadCategoryImage
-                                  : AppLocalizations.of(context)!
-                                      .updateCategoryImage,
+                                  ? AppLocalizations.of(
+                                      context,
+                                    )!.uploadCategoryImage
+                                  : AppLocalizations.of(
+                                      context,
+                                    )!.updateCategoryImage,
                               style: const TextStyle(fontSize: 15),
                             ),
                           ],
@@ -136,8 +141,9 @@ class _CategoryFormState extends State<CategoryForm> {
                             const Icon(Icons.image),
                             const SizedBox(width: 10),
                             Text(
-                              AppLocalizations.of(context)!
-                                  .categoryImageUploaded,
+                              AppLocalizations.of(
+                                context,
+                              )!.categoryImageUploaded,
                               style: const TextStyle(fontSize: 15),
                             ),
                           ],
@@ -149,10 +155,7 @@ class _CategoryFormState extends State<CategoryForm> {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
+                    border: Border.all(color: Colors.grey, width: 1),
                   ),
                   width: double.infinity,
                   height: 200,
@@ -170,8 +173,9 @@ class _CategoryFormState extends State<CategoryForm> {
             final description = categoryDescriptionController.value.text.trim();
             Uint8List? imgString;
             if (_image != null) {
-              imgString =
-                  await resizeAndCompressImage(_image!.readAsBytesSync());
+              imgString = await resizeAndCompressImage(
+                _image!.readAsBytesSync(),
+              );
             } else if (widget.category?.image != null) {
               imgString = widget.category!.image;
             } else {

@@ -4,7 +4,7 @@ import 'package:foodreviewapp/models/review.dart';
 import 'package:foodreviewapp/widgets/review_widget.dart';
 import 'package:foodreviewapp/screens/listing_screens/review_details_screen.dart';
 import 'dart:math';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:foodreviewapp/utils/display.dart';
 
@@ -13,18 +13,12 @@ class ReviewSearchDelegate extends SearchDelegate<String> {
   final String? columnName;
   final String? columnValue;
 
-  ReviewSearchDelegate({
-    this.columnName,
-    this.columnValue,
-  });
+  ReviewSearchDelegate({this.columnName, this.columnValue});
 
   Future<List<Review>?> _getReviews() {
     if (columnName != null && columnValue != null) {
       // Return reviews by column
-      return DatabaseService.getReviewsByColumn(
-        columnName!,
-        columnValue!,
-      );
+      return DatabaseService.getReviewsByColumn(columnName!, columnValue!);
     } else {
       // Return all reviews
       return DatabaseService.getAllReviews();
@@ -73,9 +67,9 @@ class ReviewSearchDelegate extends SearchDelegate<String> {
           final List<Review>? allReviews = snapshot.data;
           List<Review>? searchResults = allReviews
               ?.where(
-                (review) => review.restaurantName
-                    .toLowerCase()
-                    .contains(query.toLowerCase()),
+                (review) => review.restaurantName.toLowerCase().contains(
+                  query.toLowerCase(),
+                ),
               )
               .toList();
           return selectedDisplayMode != 2
@@ -121,9 +115,7 @@ class ReviewSearchDelegate extends SearchDelegate<String> {
                   },
                 );
         }
-        return Center(
-          child: Text(AppLocalizations.of(context)!.noReviewFound),
-        );
+        return Center(child: Text(AppLocalizations.of(context)!.noReviewFound));
       },
     );
   }
@@ -143,11 +135,12 @@ class ReviewSearchDelegate extends SearchDelegate<String> {
           final List<Review>? allReviews = snapshot.data;
           const int maxSuggestions = 10;
           final random = Random();
-          List<String> filteredNames = allReviews
+          List<String> filteredNames =
+              allReviews
                   ?.where(
-                    (review) => review.restaurantName
-                        .toLowerCase()
-                        .contains(query.toLowerCase()),
+                    (review) => review.restaurantName.toLowerCase().contains(
+                      query.toLowerCase(),
+                    ),
                   )
                   .map((review) => review.restaurantName)
                   .toList() ??
@@ -167,9 +160,7 @@ class ReviewSearchDelegate extends SearchDelegate<String> {
             itemCount: filteredNames.length,
           );
         }
-        return Center(
-          child: Text(AppLocalizations.of(context)!.noSuggestion),
-        );
+        return Center(child: Text(AppLocalizations.of(context)!.noSuggestion));
       },
     );
   }

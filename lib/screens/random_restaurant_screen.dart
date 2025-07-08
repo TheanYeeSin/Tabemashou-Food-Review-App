@@ -5,7 +5,7 @@ import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 import 'package:foodreviewapp/models/review.dart';
 import 'package:foodreviewapp/database/database_service.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 
 // Random Restaurant Screen (required 2 or more reviews)
 class RandomRestaurantScreen extends StatefulWidget {
@@ -91,8 +91,9 @@ class _RandomRestaurantScreenState extends State<RandomRestaurantScreen> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  AppLocalizations.of(context)!
-                                      .randomRestaurantSnackbar(result),
+                                  AppLocalizations.of(
+                                    context,
+                                  )!.randomRestaurantSnackbar(result),
                                 ),
                               ),
                             );
@@ -102,7 +103,8 @@ class _RandomRestaurantScreenState extends State<RandomRestaurantScreen> {
                       GestureDetector(
                         onTap: () {
                           selected.add(
-                              Fortune.randomInt(0, restaurantNames.length));
+                            Fortune.randomInt(0, restaurantNames.length),
+                          );
                         },
                         child: Container(
                           height: 40,
@@ -110,8 +112,9 @@ class _RandomRestaurantScreenState extends State<RandomRestaurantScreen> {
                           color: Colors.redAccent,
                           child: Center(
                             child: Text(
-                              AppLocalizations.of(context)!
-                                  .randomRestaurantSpin,
+                              AppLocalizations.of(
+                                context,
+                              )!.randomRestaurantSpin,
                             ),
                           ),
                         ),

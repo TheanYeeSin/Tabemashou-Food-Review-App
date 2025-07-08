@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodreviewapp/screens/settings_screens/category_setting_screen.dart';
 
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 import 'package:foodreviewapp/utils/display.dart';
 
 // Library setting screen
@@ -16,17 +16,19 @@ class LibrarySettingScreen extends StatefulWidget {
 class _LibrarySettingScreenState extends State<LibrarySettingScreen> {
   @override
   Widget build(BuildContext context) {
-    int selectedReviewDisplayMode =
-        context.watch<DisplayManager>().reviewDisplayMode;
-    int selectedCategoryDisplayMode =
-        context.watch<DisplayManager>().categoryDisplayMode;
+    int selectedReviewDisplayMode = context
+        .watch<DisplayManager>()
+        .reviewDisplayMode;
+    int selectedCategoryDisplayMode = context
+        .watch<DisplayManager>()
+        .categoryDisplayMode;
 
     void updateReviewDisplayMode(int? displayMode) {
       if (displayMode != null) {
         selectedReviewDisplayMode = displayMode;
         context.read<DisplayManager>().toggleReviewDisplayMode(
-              displayMode,
-            ); // Update the theme using the provider
+          displayMode,
+        ); // Update the theme using the provider
       }
     }
 
@@ -34,8 +36,8 @@ class _LibrarySettingScreenState extends State<LibrarySettingScreen> {
       if (displayMode != null) {
         selectedCategoryDisplayMode = displayMode;
         context.read<DisplayManager>().toggleCategoryDisplayMode(
-              displayMode,
-            ); // Update the theme using the provider
+          displayMode,
+        ); // Update the theme using the provider
       }
     }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodreviewapp/models/review.dart';
 import 'package:foodreviewapp/database/database_service.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 import 'package:foodreviewapp/utils/display.dart';
 import 'package:provider/provider.dart';
 
@@ -76,13 +76,8 @@ class _ReviewWidgetState extends State<ReviewWidget> {
             ),
             Row(
               children: [
-                const Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                ),
-                Text(
-                  widget.review.rating.toString(),
-                ),
+                const Icon(Icons.star, color: Colors.amber),
+                Text(widget.review.rating.toString()),
               ],
             ),
           ],
@@ -117,13 +112,8 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                       top: 15,
                       child: Row(
                         children: [
-                          const Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          ),
-                          Text(
-                            widget.review.rating.toString(),
-                          ),
+                          const Icon(Icons.star, color: Colors.amber),
+                          Text(widget.review.rating.toString()),
                         ],
                       ),
                     ),
@@ -235,19 +225,15 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                                 Flexible(
                                   child: Text(
                                     widget.review.restaurantName,
-                                    style:
-                                        Theme.of(context).textTheme.titleMedium,
+                                    style: Theme.of(
+                                      context,
+                                    ).textTheme.titleMedium,
                                   ),
                                 ),
                                 Row(
                                   children: [
-                                    const Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                    ),
-                                    Text(
-                                      widget.review.rating.toString(),
-                                    ),
+                                    const Icon(Icons.star, color: Colors.amber),
+                                    Text(widget.review.rating.toString()),
                                   ],
                                 ),
                               ],

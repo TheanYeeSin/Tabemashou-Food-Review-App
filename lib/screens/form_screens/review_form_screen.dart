@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodreviewapp/widgets/form/review_form.dart';
 import 'package:foodreviewapp/models/review.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 
 // Review form screen
 class ReviewFormScreen extends StatefulWidget {

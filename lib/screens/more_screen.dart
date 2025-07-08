@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodreviewapp/screens/settings_screens/backup_restore_setting_screen.dart';
 import 'package:foodreviewapp/screens/settings_screens/category_setting_screen.dart';
 import 'package:foodreviewapp/screens/settings_screens/main_settings_screen.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // More Screen -> Settings
@@ -38,8 +38,9 @@ class _MoreScreenState extends State<MoreScreen> {
                   children: [
                     ListTile(
                       leading: const Icon(Icons.tag),
-                      title:
-                          Text(AppLocalizations.of(context)!.categoriesSetting),
+                      title: Text(
+                        AppLocalizations.of(context)!.categoriesSetting,
+                      ),
                       onTap: () async {
                         await Navigator.push(
                           context,

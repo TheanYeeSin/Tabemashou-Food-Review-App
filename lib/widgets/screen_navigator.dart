@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodreviewapp/screens/listing_screens/checklist_listing_screen.dart';
 import 'package:foodreviewapp/screens/more_screen.dart';
 import 'package:foodreviewapp/screens/listing_screens/main_listing_screen.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 
 // Navigate between different screen on main page
 class ScreenNavigator extends StatefulWidget {

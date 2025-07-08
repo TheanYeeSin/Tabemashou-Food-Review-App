@@ -6,7 +6,7 @@ import 'package:foodreviewapp/widgets/common/custom_divider.dart';
 import 'package:foodreviewapp/widgets/common/review_details_field.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 // List all the details about a review screen
@@ -60,10 +60,7 @@ class _ReviewDetailsScreenState extends State<ReviewDetailsScreen> {
           isFavourite
               ? IconButton(
                   onPressed: _toggleFavourite,
-                  icon: const Icon(
-                    Icons.favorite,
-                    color: Colors.red,
-                  ),
+                  icon: const Icon(Icons.favorite, color: Colors.red),
                 )
               : IconButton(
                   onPressed: _toggleFavourite,
@@ -86,10 +83,7 @@ class _ReviewDetailsScreenState extends State<ReviewDetailsScreen> {
                     width: double.infinity,
                     height: 0.5 * MediaQuery.of(context).size.height,
                     child: reviewObject?.image != null
-                        ? Image.memory(
-                            reviewObject!.image!,
-                            fit: BoxFit.cover,
-                          )
+                        ? Image.memory(reviewObject!.image!, fit: BoxFit.cover)
                         : Image.asset(
                             'assets/images/default_restaurant.png',
                             fit: BoxFit.cover,
@@ -99,8 +93,7 @@ class _ReviewDetailsScreenState extends State<ReviewDetailsScreen> {
                     maxChildSize: 1,
                     initialChildSize: 0.50,
                     minChildSize: 0.50,
-                    builder: (context, scrollController) =>
-                        SingleChildScrollView(
+                    builder: (context, scrollController) => SingleChildScrollView(
                       controller: scrollController,
                       child: Stack(
                         children: [
@@ -166,20 +159,21 @@ class _ReviewDetailsScreenState extends State<ReviewDetailsScreen> {
                                         scrollDirection: Axis.horizontal,
                                         itemCount:
                                             reviewObject?.categories?.length,
-                                        itemBuilder: (context, index) =>
-                                            Container(
-                                          margin:
-                                              const EdgeInsets.only(right: 8),
+                                        itemBuilder: (context, index) => Container(
+                                          margin: const EdgeInsets.only(
+                                            right: 8,
+                                          ),
                                           child: Chip(
                                             shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(
+                                              borderRadius: BorderRadius.circular(
                                                 8.0,
                                               ), // Set the desired border radius
                                             ),
                                             side: BorderSide(
-                                              color: Theme.of(context)
-                                                          .brightness ==
+                                              color:
+                                                  Theme.of(
+                                                        context,
+                                                      ).brightness ==
                                                       Brightness.light
                                                   ? Colors.black
                                                   : Colors.white,
@@ -189,9 +183,9 @@ class _ReviewDetailsScreenState extends State<ReviewDetailsScreen> {
                                             label: Text(
                                               "#${reviewObject?.categories?[index]}",
                                             ),
-                                            backgroundColor: Theme.of(context)
-                                                .colorScheme
-                                                .secondary,
+                                            backgroundColor: Theme.of(
+                                              context,
+                                            ).colorScheme.secondary,
                                           ),
                                         ),
                                       ),
@@ -203,8 +197,9 @@ class _ReviewDetailsScreenState extends State<ReviewDetailsScreen> {
                                     icon: const Icon(
                                       Icons.location_on_outlined,
                                     ),
-                                    title:
-                                        AppLocalizations.of(context)!.location,
+                                    title: AppLocalizations.of(
+                                      context,
+                                    )!.location,
                                     content: reviewObject?.location,
                                   ),
                                   const CustomDivider(
@@ -217,8 +212,9 @@ class _ReviewDetailsScreenState extends State<ReviewDetailsScreen> {
                                     icon: const Icon(
                                       Icons.description_outlined,
                                     ),
-                                    title: AppLocalizations.of(context)!
-                                        .description,
+                                    title: AppLocalizations.of(
+                                      context,
+                                    )!.description,
                                     content: reviewObject?.description,
                                   ),
                                   const CustomDivider(
@@ -232,8 +228,9 @@ class _ReviewDetailsScreenState extends State<ReviewDetailsScreen> {
                                       const Icon(Icons.lunch_dining_outlined),
                                       const SizedBox(width: 8),
                                       Text(
-                                        AppLocalizations.of(context)!
-                                            .foodAvailable,
+                                        AppLocalizations.of(
+                                          context,
+                                        )!.foodAvailable,
                                         style: const TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
@@ -250,9 +247,9 @@ class _ReviewDetailsScreenState extends State<ReviewDetailsScreen> {
                                           in reviewObject?.foodAvailable ?? [])
                                         Chip(
                                           label: Text("$food"),
-                                          backgroundColor: Theme.of(context)
-                                              .colorScheme
-                                              .tertiary,
+                                          backgroundColor: Theme.of(
+                                            context,
+                                          ).colorScheme.tertiary,
                                         ),
                                     ],
                                   ),
@@ -265,11 +262,14 @@ class _ReviewDetailsScreenState extends State<ReviewDetailsScreen> {
                                   //-----Additional Review-----
                                   ReviewDetailsField(
                                     icon: const Icon(Icons.comment_outlined),
-                                    title: AppLocalizations.of(context)!
-                                        .additionalReview,
-                                    content: reviewObject?.additionalReview ??
-                                        AppLocalizations.of(context)!
-                                            .noAdditionalReview,
+                                    title: AppLocalizations.of(
+                                      context,
+                                    )!.additionalReview,
+                                    content:
+                                        reviewObject?.additionalReview ??
+                                        AppLocalizations.of(
+                                          context,
+                                        )!.noAdditionalReview,
                                   ),
                                   const SizedBox(height: 20),
                                 ],
@@ -339,8 +339,9 @@ class _ReviewDetailsScreenState extends State<ReviewDetailsScreen> {
                                 SnackBar(
                                   content: Text(
                                     // ignore: use_build_context_synchronously
-                                    AppLocalizations.of(context)!
-                                        .reviewDeletedSnackbar,
+                                    AppLocalizations.of(
+                                      context,
+                                    )!.reviewDeletedSnackbar,
                                     style: const TextStyle(color: Colors.black),
                                   ),
                                   backgroundColor: Colors.green[100],

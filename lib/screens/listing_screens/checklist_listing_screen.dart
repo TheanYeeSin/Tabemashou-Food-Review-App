@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 import 'package:foodreviewapp/database/database_service.dart';
 import 'package:foodreviewapp/models/checklist_item.dart';
 import 'package:foodreviewapp/widgets/checklist_item_widget.dart';
@@ -48,9 +48,7 @@ class _ChecklistListingScreenState extends State<ChecklistListingScreen> {
           await _refresh();
         },
         child: isLoading
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
+            ? const Center(child: CircularProgressIndicator())
             : Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
@@ -58,12 +56,9 @@ class _ChecklistListingScreenState extends State<ChecklistListingScreen> {
                 ),
                 child: FutureBuilder<List<ChecklistItem>?>(
                   future: _getAllChecklistItem(),
-                  builder:
-                      (context, AsyncSnapshot<List<ChecklistItem>?> snapshot) {
+                  builder: (context, AsyncSnapshot<List<ChecklistItem>?> snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
+                      return const Center(child: CircularProgressIndicator());
                     } else if (snapshot.hasError) {
                       return Center(
                         child: Text(
@@ -91,13 +86,13 @@ class _ChecklistListingScreenState extends State<ChecklistListingScreen> {
                                       child: Text(
                                         AppLocalizations.of(
                                           context,
-                                        )!
-                                            .deleteChecklistItemDialogTitle,
+                                        )!.deleteChecklistItemDialogTitle,
                                       ),
                                     ),
                                     content: Text(
-                                      AppLocalizations.of(context)!
-                                          .deleteChecklistItemDialogMessage,
+                                      AppLocalizations.of(
+                                        context,
+                                      )!.deleteChecklistItemDialogMessage,
                                     ),
                                     actions: [
                                       ButtonBar(
@@ -114,23 +109,22 @@ class _ChecklistListingScreenState extends State<ChecklistListingScreen> {
                                           ),
                                           TextButton(
                                             onPressed: () async {
-                                              await DatabaseService
-                                                  .deleteChecklistItem(
+                                              await DatabaseService.deleteChecklistItem(
                                                 snapshot.data![index],
                                               );
                                               // ignore: use_build_context_synchronously
                                               Navigator.pop(context);
                                               setState(() {});
                                               // ignore: use_build_context_synchronously
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
+                                              ScaffoldMessenger.of(
+                                                context,
+                                              ).showSnackBar(
                                                 SnackBar(
                                                   content: Text(
                                                     // ignore: use_build_context_synchronously
                                                     AppLocalizations.of(
                                                       context,
-                                                    )!
-                                                        .checklistItemDeletedSnackbar,
+                                                    )!.checklistItemDeletedSnackbar,
                                                     style: const TextStyle(
                                                       color: Colors.black,
                                                     ),
@@ -188,9 +182,7 @@ Future<void> _showAddChecklistDialog(
     isScrollControlled: true,
     builder: (BuildContext context) {
       return SingleChildScrollView(
-        child: ChecklistItemForm(
-          checklistItem: checklistItem,
-        ),
+        child: ChecklistItemForm(checklistItem: checklistItem),
       );
     },
   );

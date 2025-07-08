@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodreviewapp/utils/color.dart';
 import 'package:foodreviewapp/utils/style.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 
 // Appearance setting screen
 class AppearanceSettingScreen extends StatefulWidget {
@@ -21,18 +21,18 @@ class _AppearanceSettingScreenState extends State<AppearanceSettingScreen> {
     void updateTheme(ThemeMode? themeMode) {
       if (themeMode != null) {
         selectedThemeMode = themeMode;
-        context
-            .read<ThemeManager>()
-            .toggleTheme(themeMode); // Update the theme using the provider
+        context.read<ThemeManager>().toggleTheme(
+          themeMode,
+        ); // Update the theme using the provider
       }
     }
 
     void updateColor(ColorOption? colorMode) {
       if (colorMode != null) {
         selectedColorMode = colorMode;
-        context
-            .read<ThemeManager>()
-            .toggleColor(colorMode); // Update the color using the provider
+        context.read<ThemeManager>().toggleColor(
+          colorMode,
+        ); // Update the color using the provider
       }
     }
 

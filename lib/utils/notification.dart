@@ -13,8 +13,9 @@ class NotificationManager {
 
   static Future initialize() async {
     tz.initializeTimeZones();
-    var initializationSettingsAndroid =
-        const AndroidInitializationSettings('drawable/ic_stat_logo');
+    var initializationSettingsAndroid = const AndroidInitializationSettings(
+      'drawable/ic_stat_logo',
+    );
     var initializationSettingsIOS = const DarwinInitializationSettings();
     var initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid,
@@ -66,8 +67,6 @@ class NotificationManager {
         await format(scheduledTime),
         await _notificationDetails(),
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime,
         matchDateTimeComponents: DateTimeComponents.time,
       );
     } catch (e) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodreviewapp/database/database_service.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 import 'dart:io';
 
 // Backup and Restore setting screen
@@ -48,8 +48,9 @@ class _BackupRestoreSettingScreenState
                   SnackBar(
                     content: Text(
                       // ignore: use_build_context_synchronously
-                      AppLocalizations.of(context)!
-                          .backUpFailedSnackbar(e.toString()),
+                      AppLocalizations.of(
+                        context,
+                      )!.backUpFailedSnackbar(e.toString()),
                       style: const TextStyle(color: Colors.black),
                     ),
                     backgroundColor: Colors.red[100],
@@ -61,8 +62,9 @@ class _BackupRestoreSettingScreenState
           ListTile(
             leading: const Icon(Icons.restore),
             title: Text(AppLocalizations.of(context)!.restoreSetting),
-            subtitle:
-                Text(AppLocalizations.of(context)!.restoreSettingSubtitle),
+            subtitle: Text(
+              AppLocalizations.of(context)!.restoreSettingSubtitle,
+            ),
             trailing: const Icon(Icons.chevron_right_outlined),
             onTap: () async {
               FilePickerResult? result = await FilePicker.platform.pickFiles();

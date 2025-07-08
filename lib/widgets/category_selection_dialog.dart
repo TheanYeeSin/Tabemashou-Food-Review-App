@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodreviewapp/models/category.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 
 // Category selection dialog in Category form
 class CategorySelectionDialog extends StatefulWidget {

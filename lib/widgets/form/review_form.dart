@@ -10,7 +10,7 @@ import 'package:foodreviewapp/models/category.dart';
 import 'package:foodreviewapp/widgets/common/custom_divider.dart';
 import 'package:foodreviewapp/widgets/common/custom_form_field.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 import 'package:foodreviewapp/utils/image.dart';
 
 // Review Form
@@ -111,9 +111,7 @@ class _ReviewFormState extends State<ReviewForm> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Center(
-            child: Text(
-              AppLocalizations.of(context)!.chooseOptionDialogTitle,
-            ),
+            child: Text(AppLocalizations.of(context)!.chooseOptionDialogTitle),
           ),
           content: SingleChildScrollView(
             child: ListBody(
@@ -124,9 +122,7 @@ class _ReviewFormState extends State<ReviewForm> {
                     Navigator.pop(context);
                   },
                   title: Text(AppLocalizations.of(context)!.galleryOption),
-                  leading: const Icon(
-                    Icons.account_box,
-                  ),
+                  leading: const Icon(Icons.account_box),
                 ),
                 const CustomDivider(
                   symmetricPadding: 4,
@@ -139,9 +135,7 @@ class _ReviewFormState extends State<ReviewForm> {
                     Navigator.pop(context);
                   },
                   title: Text(AppLocalizations.of(context)!.cameraOption),
-                  leading: const Icon(
-                    Icons.camera,
-                  ),
+                  leading: const Icon(Icons.camera),
                 ),
               ],
             ),
@@ -167,10 +161,7 @@ class _ReviewFormState extends State<ReviewForm> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
+                    border: Border.all(color: Colors.grey, width: 1),
                   ),
                   child: InkWell(
                     onTap: () {
@@ -211,8 +202,9 @@ class _ReviewFormState extends State<ReviewForm> {
                     child: CustomFormField(
                       controller: restaurantNameController,
                       labelText: AppLocalizations.of(context)!.restaurantName,
-                      errorText: AppLocalizations.of(context)!
-                          .enterRestaurantNameError,
+                      errorText: AppLocalizations.of(
+                        context,
+                      )!.enterRestaurantNameError,
                       prefixIcon: const Icon(Icons.restaurant),
                       readOnly: false,
                       validator: requiredString,
@@ -276,8 +268,9 @@ class _ReviewFormState extends State<ReviewForm> {
               CustomFormField(
                 controller: foodAvailableController,
                 labelText: AppLocalizations.of(context)!.foodAvailable,
-                errorText:
-                    AppLocalizations.of(context)!.enterFoodAvailableError,
+                errorText: AppLocalizations.of(
+                  context,
+                )!.enterFoodAvailableError,
                 prefixIcon: const Icon(Icons.lunch_dining),
                 readOnly: false,
                 validator: requiredString,
@@ -293,10 +286,8 @@ class _ReviewFormState extends State<ReviewForm> {
                   itemCount: 10,
                   itemSize: 28,
                   itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
-                  itemBuilder: (context, _) => const Icon(
-                    Icons.star,
-                    color: Colors.amber,
-                  ),
+                  itemBuilder: (context, _) =>
+                      const Icon(Icons.star, color: Colors.amber),
                   onRatingUpdate: (rating) {
                     setState(() {
                       _ratingController = rating;
@@ -324,8 +315,9 @@ class _ReviewFormState extends State<ReviewForm> {
             final restaurantName = restaurantNameController.value.text.trim();
             final location = locationController.value.text.trim();
             final description = descriptionController.value.text.trim();
-            final foodAvailable =
-                foodAvailableController.value.text.trim().split(',');
+            final foodAvailable = foodAvailableController.value.text
+                .trim()
+                .split(',');
             final rating = _ratingController;
             final additionalReview = reviewController.value.text.trim();
             final selectedCategories = _selectedCategories;
@@ -333,8 +325,9 @@ class _ReviewFormState extends State<ReviewForm> {
             final isFavourite = widget.review?.isFavourite ?? false;
             Uint8List? imgString;
             if (_image != null) {
-              imgString =
-                  await resizeAndCompressImage(_image!.readAsBytesSync());
+              imgString = await resizeAndCompressImage(
+                _image!.readAsBytesSync(),
+              );
             } else if (widget.review?.image != null) {
               imgString = widget.review!.image;
             } else {

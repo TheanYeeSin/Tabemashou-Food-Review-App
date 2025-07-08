@@ -3,7 +3,7 @@ import 'package:foodreviewapp/database/database_service.dart';
 import 'package:foodreviewapp/models/checklist_item.dart';
 import 'package:foodreviewapp/utils/validator.dart';
 import 'package:foodreviewapp/widgets/common/custom_form_field.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 
 // Checklist Item Form
 class ChecklistItemForm extends StatefulWidget {
@@ -57,8 +57,9 @@ class _ChecklistItemFormState extends State<ChecklistItemForm> {
                 CustomFormField(
                   controller: nameController,
                   labelText: AppLocalizations.of(context)!.checklistItem,
-                  errorText:
-                      AppLocalizations.of(context)!.enterChecklistItemNameError,
+                  errorText: AppLocalizations.of(
+                    context,
+                  )!.enterChecklistItemNameError,
                   prefixIcon: const Icon(Icons.add_box_outlined),
                   validator: requiredString,
                   readOnly: false,
@@ -82,8 +83,9 @@ class _ChecklistItemFormState extends State<ChecklistItemForm> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                AppLocalizations.of(context)!
-                                    .checklistItemAddedSnackbar,
+                                AppLocalizations.of(
+                                  context,
+                                )!.checklistItemAddedSnackbar,
                                 style: const TextStyle(color: Colors.black),
                               ),
                               backgroundColor: Colors.green[100],
@@ -96,8 +98,9 @@ class _ChecklistItemFormState extends State<ChecklistItemForm> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                AppLocalizations.of(context)!
-                                    .checklistItemUpdatedSnackbar,
+                                AppLocalizations.of(
+                                  context,
+                                )!.checklistItemUpdatedSnackbar,
                                 style: const TextStyle(color: Colors.black),
                               ),
                               backgroundColor: Colors.green[100],

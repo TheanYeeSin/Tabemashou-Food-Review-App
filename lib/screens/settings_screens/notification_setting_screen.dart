@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodreviewapp/utils/notification.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Notification setting screen
@@ -55,17 +55,14 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
   }
 
   Future<void> _saveTime(String key, TimeOfDay timeOfDay) async {
-    await _prefs.setString(
-      key,
-      '${timeOfDay.hour}:${timeOfDay.minute}',
-    );
+    await _prefs.setString(key, '${timeOfDay.hour}:${timeOfDay.minute}');
   }
 
   Future<void> _saveSwitch(String key, bool value) async {
     await _prefs.setBool(key, value);
   }
 
-// Inside each onChanged method for the switches
+  // Inside each onChanged method for the switches
 
   @override
   Widget build(BuildContext context) {
@@ -81,12 +78,14 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
                 builder: (BuildContext context) {
                   return AlertDialog(
                     title: Text(
-                      AppLocalizations.of(context)!
-                          .notificationTooltipDialogTitle,
+                      AppLocalizations.of(
+                        context,
+                      )!.notificationTooltipDialogTitle,
                     ),
                     content: Text(
-                      AppLocalizations.of(context)!
-                          .notificationTooltipDialogMessage,
+                      AppLocalizations.of(
+                        context,
+                      )!.notificationTooltipDialogMessage,
                     ),
                     actions: [
                       TextButton(
@@ -128,10 +127,12 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
                         NotificationManager.scheduleDailyNotification(
                           111,
                           selectedBreakfastTime,
-                          AppLocalizations.of(context)!
-                              .breakfastNotificationTitle,
-                          AppLocalizations.of(context)!
-                              .breakfastNotificationMessage,
+                          AppLocalizations.of(
+                            context,
+                          )!.breakfastNotificationTitle,
+                          AppLocalizations.of(
+                            context,
+                          )!.breakfastNotificationMessage,
                         );
                       }
                       _saveTime('breakfastTime', timeOfDay);
@@ -151,10 +152,12 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
                       NotificationManager.scheduleDailyNotification(
                         111,
                         selectedBreakfastTime,
-                        AppLocalizations.of(context)!
-                            .breakfastNotificationTitle,
-                        AppLocalizations.of(context)!
-                            .breakfastNotificationMessage,
+                        AppLocalizations.of(
+                          context,
+                        )!.breakfastNotificationTitle,
+                        AppLocalizations.of(
+                          context,
+                        )!.breakfastNotificationMessage,
                       );
                     } else {
                       NotificationManager.cancelNotification(111);
@@ -189,8 +192,9 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
                           222,
                           selectedLunchTime,
                           AppLocalizations.of(context)!.lunchNotificationTitle,
-                          AppLocalizations.of(context)!
-                              .lunchNotificationMessage,
+                          AppLocalizations.of(
+                            context,
+                          )!.lunchNotificationMessage,
                         );
                       }
                       _saveTime('lunchTime', timeOfDay);
@@ -247,8 +251,9 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
                           333,
                           selectedDinnerTime,
                           AppLocalizations.of(context)!.dinnerNotificationTitle,
-                          AppLocalizations.of(context)!
-                              .dinnerNotificationMessage,
+                          AppLocalizations.of(
+                            context,
+                          )!.dinnerNotificationMessage,
                         );
                       }
                       _saveTime('dinnerTime', timeOfDay);

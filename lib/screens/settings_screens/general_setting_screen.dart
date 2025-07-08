@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodreviewapp/utils/language.dart';
 
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:foodreviewapp/l10n/app_localizations.dart';
 
 // General setting screen
 class GeneralSettingScreen extends StatefulWidget {
@@ -19,9 +19,9 @@ class _GeneralSettingScreenState extends State<GeneralSettingScreen> {
     void updateLanguage(Locale? locale) {
       if (locale != null) {
         selectedLanguage = locale;
-        context
-            .read<LanguageManager>()
-            .changeLanguage(locale); // Update the theme using the provider
+        context.read<LanguageManager>().changeLanguage(
+          locale,
+        ); // Update the theme using the provider
       }
     }
 
@@ -38,14 +38,8 @@ class _GeneralSettingScreenState extends State<GeneralSettingScreen> {
               value: selectedLanguage,
               onChanged: updateLanguage,
               items: const [
-                DropdownMenuItem(
-                  value: Locale('en'),
-                  child: Text("English"),
-                ),
-                DropdownMenuItem(
-                  value: Locale('zh'),
-                  child: Text("中文"),
-                ),
+                DropdownMenuItem(value: Locale('en'), child: Text("English")),
+                DropdownMenuItem(value: Locale('zh'), child: Text("中文")),
               ],
             ),
           ),
