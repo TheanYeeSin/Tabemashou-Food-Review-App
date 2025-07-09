@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:tabemashou/core/constants/path.dart";
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key, required this.title});
@@ -29,6 +30,10 @@ class _MainScreenState extends State<MainScreen> {
         children: <Widget>[
           const Text("You have pushed the button this many times:"),
           Text("$_counter", style: Theme.of(context).textTheme.headlineMedium),
+          TextButton(
+            onPressed: () => Navigator.pushNamed(context, MORE_PATH),
+            child: const Text("More"),
+          ),
         ],
       ),
     ),
