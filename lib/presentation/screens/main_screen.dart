@@ -16,6 +16,6 @@ class _MainScreenState extends State<MainScreen> {
       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       title: Text(widget.title),
     ),
-    bottomNavigationBar: CustomNavBar(),
+    bottomNavigationBar: const CustomNavBar(),
   );
 }
