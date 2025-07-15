@@ -2,3 +2,5 @@
 
 // App routes
 const MORE_PATH = "/more";
+const MAIN_REVIEW_PATH = "/review";
+const CHECKLIST_PATH = "/checklist";

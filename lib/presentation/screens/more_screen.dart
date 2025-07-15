@@ -9,6 +9,10 @@ class MoreScreen extends StatefulWidget {
 
 class _MoreScreenState extends State<MoreScreen> {
   @override
-  Widget build(final BuildContext context) =>
-      Scaffold(appBar: AppBar(title: const Text("More")));
+  Widget build(final BuildContext context) => Scaffold(
+    appBar: AppBar(
+      backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      title: const Text("FLUTTER DEMO MORE PAGE"),
+    ),
+  );
 }

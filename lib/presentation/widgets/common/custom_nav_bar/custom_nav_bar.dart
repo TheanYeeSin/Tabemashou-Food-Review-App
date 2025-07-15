@@ -1,22 +1,25 @@
 import "package:flutter/material.dart";
+import "package:tabemashou/core/type/common.dart";
 import "package:tabemashou/presentation/widgets/common/custom_nav_bar/custom_nar_button.dart";
 
 class CustomNavBar extends StatefulWidget {
-  const CustomNavBar({super.key});
+  final int currentIndex;
+  final void Function(int index) onItemTapped;
+  final List<NavBarItem> items;
+
+  const CustomNavBar({
+    super.key,
+    required this.currentIndex,
+    required this.onItemTapped,
+    required this.items,
+  });
 
   @override
   State<CustomNavBar> createState() => _CustomNavBarState();
 }
 
 class _CustomNavBarState extends State<CustomNavBar> {
-  final _items = [
-    _NavBarItem(icon: Icons.checklist_rounded, label: "Checklist"),
-    _NavBarItem(icon: Icons.reviews, label: "Reviews"),
-    _NavBarItem(icon: Icons.more_horiz, label: "More"),
-  ];
-
-  int _currentIndex = 1;
-  void _onItemTapped(final int index) => setState(() => _currentIndex = index);
+  late final List<NavBarItem> _items = widget.items;
 
   @override
   Widget build(final BuildContext context) => BottomAppBar(
@@ -27,10 +30,9 @@ class _CustomNavBarState extends State<CustomNavBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: List.generate(_items.length, (final index) {
-          final isSelected = _currentIndex == index;
-
+          final isSelected = widget.currentIndex == index;
           return GestureDetector(
-            onTap: () => _onItemTapped(index),
+            onTap: () => widget.onItemTapped(index),
             child: CustomNavButton(
               icon: _items[index].icon,
               isSelected: isSelected,
@@ -41,11 +43,4 @@ class _CustomNavBarState extends State<CustomNavBar> {
       ),
     ),
   );
-}
-
-class _NavBarItem {
-  final IconData icon;
-  final String label;
-
-  _NavBarItem({required this.icon, required this.label});
 }
