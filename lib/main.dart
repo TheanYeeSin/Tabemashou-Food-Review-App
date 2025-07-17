@@ -1,12 +1,19 @@
 import "package:flutter/material.dart";
 import "package:tabemashou/core/constants/path.dart";
 import "package:tabemashou/core/theme/theme.dart";
+import "package:tabemashou/core/utils/log/logger.dart";
 import "package:tabemashou/presentation/screens/checklist_screen.dart";
 import "package:tabemashou/presentation/screens/main_navigator_screen.dart";
 import "package:tabemashou/presentation/screens/more_screen.dart";
 import "package:tabemashou/presentation/screens/review_screen.dart";
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize logger
+  await LoggerService.init();
+  LoggerService.logInfo("App started");
+
   runApp(const MyApp());
 }
 
