@@ -9,10 +9,6 @@ class ReviewScreen extends StatefulWidget {
 
 class _ReviewScreenState extends State<ReviewScreen> {
   @override
-  Widget build(final BuildContext context) => Scaffold(
-    appBar: AppBar(
-      backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      title: const Text("FLUTTER DEMO REVIEW PAGE"),
-    ),
-  );
+  Widget build(final BuildContext context) =>
+      Scaffold(appBar: AppBar(title: const Text("Reviews"), centerTitle: true));
 }
