@@ -24,7 +24,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
   @override
   Widget build(final BuildContext context) => BottomAppBar(
     elevation: 10,
-    color: Colors.white,
+    color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
