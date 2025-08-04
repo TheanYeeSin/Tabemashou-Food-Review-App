@@ -5,22 +5,22 @@ import "package:logger/logger.dart";
 import "package:path_provider/path_provider.dart";
 import "package:tabemashou/core/utils/log/log_printer.dart";
 
-/// Logger service that handles log entries
+/// LoggerService: Handles runtime logging to file and console
 class LoggerService {
+  // ───── Logger instance setup ─────
   static final Logger _logger = Logger(
     level: Level.debug,
     printer: SingleLinePrinter(),
   );
-
   static Logger get logger => _logger;
 
+  // ───── Internal state ─────
   static File? _logFile;
   static final Queue<_LogEntry> _logQueue = Queue<_LogEntry>();
   static bool _isProcessing = false;
 
-  /// Initializes the logger service
+  // ───── Initialization ─────
   static Future<void> init() async {
-    // Create log directory
     final directory = await getApplicationDocumentsDirectory();
     final String logPath = "${directory.path}/logs";
 
@@ -44,36 +44,22 @@ class LoggerService {
     _logFile = File("$path/log.txt");
   }
 
-  /// Writes a debug message to the log file
+  // ───── Public logging methods ─────
   static void logDebug(final String message) =>
       _enqueueLog(Level.debug, message);
 
-  /// Writes an info message to the log file
   static void logInfo(final String message) => _enqueueLog(Level.info, message);
 
-  /// Writes an error message to the log file
   static void logError(
     final String message, [
     final dynamic error,
     final StackTrace? stackTrace,
   ]) => _enqueueLog(Level.error, message, error, stackTrace);
 
-  /// Writes a warning message to the log file
   static void logWarning(final String message) =>
       _enqueueLog(Level.warning, message);
 
-  /// Writes the log entry to the log file
-  static Future<void> _writeToFile(final String message) async {
-    if (_logFile != null) {
-      await _logFile!.writeAsString(
-        "${DateTime.now()} - $message\n",
-        mode: FileMode.append,
-        flush: true,
-      );
-    }
-  }
-
-  /// Enqueues a log entry
+  // ───── Internal log queueing ─────
   static void _enqueueLog(
     final Level level,
     final String message, [
@@ -86,7 +72,6 @@ class LoggerService {
     }
   }
 
-  /// Processes the log queue
   static Future<void> _processLogQueue() async {
     if (_isProcessing) {
       return;
@@ -125,9 +110,20 @@ class LoggerService {
 
     _isProcessing = false;
   }
+
+  // ───── File I/O ─────
+  static Future<void> _writeToFile(final String message) async {
+    if (_logFile != null) {
+      await _logFile!.writeAsString(
+        "${DateTime.now()} - $message\n",
+        mode: FileMode.append,
+        flush: true,
+      );
+    }
+  }
 }
 
-/// Represents a log entry
+/// _LogEntry: Internal structure for log messages
 class _LogEntry {
   final Level level;
   final String message;
