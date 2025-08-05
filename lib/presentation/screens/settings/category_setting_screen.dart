@@ -6,6 +6,7 @@ import "package:tabemashou/presentation/providers/category_provider.dart";
 import "package:tabemashou/presentation/widgets/category/category_dialog.dart";
 import "package:tabemashou/presentation/widgets/category/category_setting_list_tile.dart";
 import "package:tabemashou/presentation/widgets/category/delete_category_dialog.dart";
+import "package:tabemashou/presentation/widgets/common/empty_placeholder_view.dart";
 
 /// CategorySettingScreen: Screen for managing categories
 class CategorySettingScreen extends StatefulWidget {
@@ -120,7 +121,11 @@ class _CategorySettingScreenState extends State<CategorySettingScreen> {
         ),
         body: Padding(
           padding: const EdgeInsets.all(16),
-          child: ReorderableListView.builder(
+          child: categories.isEmpty
+              ? const EmptyPlaceholderView(
+                  message: "No categories found. Add one to get started.",
+                )
+              : ReorderableListView.builder(
             itemCount: categories.length,
             itemBuilder: (final context, final index) =>
                 CategorySettingListTile(
