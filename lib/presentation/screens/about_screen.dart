@@ -1,3 +1,4 @@
+import "package:flutter/gestures.dart";
 import "package:flutter/material.dart";
 import "package:package_info_plus/package_info_plus.dart";
 import "package:tabemashou/core/utils/url_launcher/url_launcher.dart";
@@ -66,6 +67,27 @@ class _AboutScreenState extends State<AboutScreen> {
             );
           },
           trailing: const Icon(Icons.chevron_right_outlined),
+        ),
+        const SizedBox(height: 24),
+        Center(
+          child: RichText(
+            text: TextSpan(
+              text: "Made with ❤️ by ",
+              style: const TextStyle(color: Colors.white),
+              children: [
+                TextSpan(
+                  text: "Thean Yee Sin",
+                  style: const TextStyle(color: Colors.blue),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () async {
+                      await UrlLauncherService.launchUrlString(
+                        "https://github.com/TheanYeeSin",
+                      );
+                    },
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     ),
