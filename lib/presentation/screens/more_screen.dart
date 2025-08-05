@@ -43,7 +43,7 @@ class _MoreScreenState extends State<MoreScreen> {
           ListTile(
             leading: const Icon(Icons.info_outlined),
             title: const Text("About"),
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, ABOUT_PATH)
           ),
           ListTile(
             leading: const Icon(Icons.help_outline),
