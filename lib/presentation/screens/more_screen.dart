@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:tabemashou/core/constants/path.dart";
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({super.key});
@@ -7,6 +8,7 @@ class MoreScreen extends StatefulWidget {
   State<MoreScreen> createState() => _MoreScreenState();
 }
 
+// ----- Build -----
 class _MoreScreenState extends State<MoreScreen> {
   @override
   Widget build(final BuildContext context) => SafeArea(
@@ -25,7 +27,7 @@ class _MoreScreenState extends State<MoreScreen> {
           ListTile(
             leading: const Icon(Icons.tag_outlined),
             title: const Text("Categories"),
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, CATEGORY_SETTINGS_PATH),
           ),
           ListTile(
             leading: const Icon(Icons.backup_outlined),
