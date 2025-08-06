@@ -17,18 +17,6 @@ class CategorySettingScreen extends StatefulWidget {
 }
 
 class _CategorySettingScreenState extends State<CategorySettingScreen> {
-  // ----- Lifecycle -----
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => Provider.of<CategoryProvider>(
-        context,
-        listen: false,
-      ).loadCategories(),
-    );
-  }
-
   // ----- Add Category -----
   Future<void> _addCategory() async {
     final result = await showDialog(
@@ -126,17 +114,17 @@ class _CategorySettingScreenState extends State<CategorySettingScreen> {
                   message: "No categories found. Add one to get started.",
                 )
               : ReorderableListView.builder(
-            itemCount: categories.length,
-            itemBuilder: (final context, final index) =>
-                CategorySettingListTile(
-                  category: categories[index],
-                  index: index,
-                  key: ValueKey(categories[index].id),
-                  onEdit: _editCategory,
-                  onDelete: _deleteCategory,
+                  itemCount: categories.length,
+                  itemBuilder: (final context, final index) =>
+                      CategorySettingListTile(
+                        category: categories[index],
+                        index: index,
+                        key: ValueKey(categories[index].id),
+                        onEdit: _editCategory,
+                        onDelete: _deleteCategory,
+                      ),
+                  onReorder: _reorder,
                 ),
-            onReorder: _reorder,
-          ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: _addCategory,
