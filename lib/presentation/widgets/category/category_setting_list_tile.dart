@@ -19,46 +19,45 @@ class CategorySettingListTile extends StatelessWidget {
   // ---- Build ----
   @override
   Widget build(final BuildContext context) => Card(
-    elevation: 5,
+    elevation: 2,
+    clipBehavior: Clip.antiAlias,
     child: InkWell(
       onDoubleTap: () => onEdit(category),
       onLongPress: () => onDelete(category),
-      child: Ink(
-        child: ListTile(
-          title: Text(
-            category.name,
-            overflow: TextOverflow.ellipsis,
-            softWrap: false,
-            maxLines: 1,
-          ),
-          subtitle: Text(
-            category.description,
-            overflow: TextOverflow.ellipsis,
-            softWrap: false,
-            maxLines: 1,
-          ),
-          leading: ReorderableDragStartListener(
-            index: index,
-            child: const Icon(Icons.drag_handle_outlined),
-          ),
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              IconButton(
-                icon: const Icon(Icons.edit_outlined),
-                tooltip: "Edit",
-                onPressed: () => onEdit(category),
-              ),
-              IconButton(
-                color: Colors.red,
-                icon: const Icon(Icons.delete_outline),
-                tooltip: "Delete",
-                onPressed: () => onDelete(category),
-              ),
-            ],
-          ),
-          onTap: () => {LoggerService.logDebug("TAP")},
+      child: ListTile(
+        title: Text(
+          category.name,
+          overflow: TextOverflow.ellipsis,
+          softWrap: false,
+          maxLines: 1,
         ),
+        subtitle: Text(
+          category.description,
+          overflow: TextOverflow.ellipsis,
+          softWrap: false,
+          maxLines: 1,
+        ),
+        leading: ReorderableDragStartListener(
+          index: index,
+          child: const Icon(Icons.drag_handle_outlined),
+        ),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.edit_outlined),
+              tooltip: "Edit",
+              onPressed: () => onEdit(category),
+            ),
+            IconButton(
+              color: Colors.red,
+              icon: const Icon(Icons.delete_outline),
+              tooltip: "Delete",
+              onPressed: () => onDelete(category),
+            ),
+          ],
+        ),
+        onTap: () => {LoggerService.logDebug("TAP")},
       ),
     ),
   );
