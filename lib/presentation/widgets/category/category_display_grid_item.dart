@@ -21,9 +21,8 @@ class CategoryDisplayGridItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // ----- Top Side -----
-            SizedBox(
-              height: 88,
-              width: double.infinity,
+            AspectRatio(
+              aspectRatio: 16 / 9,
               child: category.image != null
                   ? ClipRRect(
                       borderRadius: const BorderRadius.only(
@@ -45,23 +44,12 @@ class CategoryDisplayGridItem extends StatelessWidget {
             ),
 
             // ----- Bottom Side -----
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    category.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    category.description,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
+            ListTile(
+              title: Text(
+                category.name,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                softWrap: false,
               ),
             ),
           ],
