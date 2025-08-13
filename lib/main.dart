@@ -8,6 +8,7 @@ import "package:tabemashou/domain/category/category_repository_impl.dart";
 import "package:tabemashou/presentation/providers/category_provider.dart";
 import "package:tabemashou/presentation/screens/about_screen.dart";
 import "package:tabemashou/presentation/screens/checklist_screen.dart";
+import "package:tabemashou/presentation/screens/home_screen.dart";
 import "package:tabemashou/presentation/screens/main_navigator_screen.dart";
 import "package:tabemashou/presentation/screens/more_screen.dart";
 import "package:tabemashou/presentation/screens/review_screen.dart";
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
     darkTheme: TAppTheme.darkTheme(),
     home: const MainNavigatorScreen(),
     routes: {
+      HOME_PATH: (final context) => const HomeScreen(),
       ABOUT_PATH: (final context) => const AboutScreen(),
       MORE_PATH: (final context) => const MoreScreen(),
       MAIN_REVIEW_PATH: (final context) => const ReviewScreen(),
