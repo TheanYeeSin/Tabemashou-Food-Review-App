@@ -11,17 +11,18 @@ import "package:tabemashou/presentation/screens/checklist_screen.dart";
 import "package:tabemashou/presentation/screens/home_screen.dart";
 import "package:tabemashou/presentation/screens/main_navigator_screen.dart";
 import "package:tabemashou/presentation/screens/more_screen.dart";
+import "package:tabemashou/presentation/screens/random_restaurant_screen.dart";
 import "package:tabemashou/presentation/screens/review_screen.dart";
 import "package:tabemashou/presentation/screens/settings/category_setting_screen.dart";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize logger
+  // ----- Logger -----
   await LoggerService.init();
   LoggerService.logInfo("App started");
 
-  // Initialize category provider
+  // ----- Category Source -----
   final localSource = CategoryLocalSource();
   final repository = CategoryRepositoryImpl(local: localSource);
 
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => MaterialApp(
-    title: "Flutter Demo",
+    title: "Tabemashou",
     theme: TAppTheme.lightTheme(),
     darkTheme: TAppTheme.darkTheme(),
     home: const MainNavigatorScreen(),
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
       ABOUT_PATH: (final context) => const AboutScreen(),
       MORE_PATH: (final context) => const MoreScreen(),
       MAIN_REVIEW_PATH: (final context) => const ReviewScreen(),
+      RANDOM_RESTAURANT_PATH: (final context) => const RandomRestaurantScreen(),
       CHECKLIST_PATH: (final context) => const ChecklistScreen(),
       CATEGORY_SETTINGS_PATH: (final context) => const CategorySettingScreen(),
     },

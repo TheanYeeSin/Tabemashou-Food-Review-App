@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
 
     return Consumer<CategoryProvider>(
       builder: (final context, final provider, final child) {
-        final categories = provider.loadSortedCategories();
+        final categories = provider.categories;
         return Scaffold(
           appBar: AppBar(title: Text("$greeting👋"), elevation: 0),
           body: SingleChildScrollView(
