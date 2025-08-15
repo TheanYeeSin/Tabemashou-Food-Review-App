@@ -49,8 +49,8 @@ class HomeScreen extends StatelessWidget {
                 const ChecklistPreview(),
                 const SizedBox(height: 20),
 
-                // ----- TODO: Recommendation based on last ate + favourite + categories -----
-                // ----- TODO: Food Quote Offline -----
+                // To-do: Recommendation based on last ate + favourite + categories
+                // To-do: Food Quote Offline
               ],
             ),
           ),
