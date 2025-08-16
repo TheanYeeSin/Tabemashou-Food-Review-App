@@ -12,7 +12,7 @@ import "package:tabemashou/presentation/screens/home_screen.dart";
 import "package:tabemashou/presentation/screens/main_navigator_screen.dart";
 import "package:tabemashou/presentation/screens/more_screen.dart";
 import "package:tabemashou/presentation/screens/random_restaurant_screen.dart";
-import "package:tabemashou/presentation/screens/review_screen.dart";
+import "package:tabemashou/presentation/screens/home_categories_screen.dart";
 import "package:tabemashou/presentation/screens/settings/category_setting_screen.dart";
 
 void main() async {
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
       HOME_PATH: (final context) => const HomeScreen(),
       ABOUT_PATH: (final context) => const AboutScreen(),
       MORE_PATH: (final context) => const MoreScreen(),
-      MAIN_REVIEW_PATH: (final context) => const ReviewScreen(),
+      MAIN_REVIEW_PATH: (final context) => const HomeCategoriesScreen(),
       RANDOM_RESTAURANT_PATH: (final context) => const RandomRestaurantScreen(),
       CHECKLIST_PATH: (final context) => const ChecklistScreen(),
       CATEGORY_SETTINGS_PATH: (final context) => const CategorySettingScreen(),

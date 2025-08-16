@@ -5,7 +5,7 @@ import "package:tabemashou/presentation/screens/checklist_screen.dart";
 import "package:tabemashou/presentation/screens/home_screen.dart";
 import "package:tabemashou/presentation/screens/more_screen.dart";
 import "package:tabemashou/presentation/screens/random_restaurant_screen.dart";
-import "package:tabemashou/presentation/screens/review_screen.dart";
+import "package:tabemashou/presentation/screens/home_categories_screen.dart";
 import "package:tabemashou/presentation/widgets/common/custom_nav_bar.dart";
 
 class MainNavigatorScreen extends StatefulWidget {
@@ -34,7 +34,7 @@ class _MainNavigatorScreenState extends State<MainNavigatorScreen> {
       selectedIcon: Icons.reviews_rounded,
       label: "Reviews",
       path: MAIN_REVIEW_PATH,
-      screen: const ReviewScreen(),
+      screen: const HomeCategoriesScreen(),
     ),
     NavBarItem(
       icon: Icons.home_outlined,

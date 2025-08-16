@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import "package:tabemashou/core/type/category.dart";
+import "package:tabemashou/core/utils/sort/sort_utils.dart";
 import "package:tabemashou/domain/category/category.dart";
 import "package:tabemashou/domain/category/category_repository.dart";
 
@@ -9,10 +11,44 @@ class CategoryProvider extends ChangeNotifier {
 
   // ----- State and Getters -----
   List<Category> _categories = [];
-  List<Category> get categories => _categories;
 
   bool _isLoading = false;
+
+  // sort
+  CategorySortMode _sortMode = CategorySortMode.order;
+  CategorySortOrder _sortOrder = CategorySortOrder.asc;
+
+  // layout
+  CategoryLayoutMode _layoutMode = CategoryLayoutMode.list;
+
+  // ----- Getters -----
+  List<Category> get categories => List.unmodifiable(_categories);
   bool get isLoading => _isLoading;
+  CategorySortMode get sortMode => _sortMode;
+  CategorySortOrder get sortOrder => _sortOrder;
+  CategoryLayoutMode get layoutMode => _layoutMode;
+
+  // ----- Setters -----
+  void setSortMode(final CategorySortMode mode) {
+    if (_sortMode != mode) {
+      _sortMode = mode;
+      notifyListeners();
+    }
+  }
+
+  void setSortOrder(final CategorySortOrder order) {
+    if (_sortOrder != order) {
+      _sortOrder = order;
+      notifyListeners();
+    }
+  }
+
+  void setLayoutMode(final CategoryLayoutMode mode) {
+    if (_layoutMode != mode) {
+      _layoutMode = mode;
+      notifyListeners();
+    }
+  }
 
   // ----- Load / Refresh -----
   Future<void> loadCategories() async {
@@ -22,6 +58,28 @@ class CategoryProvider extends ChangeNotifier {
     _categories = await repository.getAll();
     _isLoading = false;
     notifyListeners();
+  }
+
+  List<Category> loadSortedCategories() {
+    final sorted = List.of(_categories);
+
+    switch (_sortMode) {
+      case CategorySortMode.name:
+        SortUtils.sortByField(
+          sorted,
+          (final c) => c.name,
+          ascending: _sortOrder == CategorySortOrder.asc,
+        );
+
+      case CategorySortMode.order:
+        SortUtils.sortByField(
+          sorted,
+          (final c) => c.order,
+          ascending: _sortOrder == CategorySortOrder.asc,
+        );
+    }
+
+    return sorted;
   }
 
   // ----- Create -----
