@@ -77,48 +77,51 @@ class _CategoryDialogState extends State<CategoryDialog> {
       ),
       TextButton(onPressed: _submit, child: const Text("Submit")),
     ],
-    content: SingleChildScrollView(
-      child: Form(
-        autovalidateMode: AutovalidateMode.onUnfocus,
-        key: _formKey,
-        child: Column(
-          children: [
-            if (_selectedImage != null && _selectedImage!.isNotEmpty)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.memory(_selectedImage!, height: 100),
+    content: SizedBox(
+      width: double.maxFinite,
+      child: SingleChildScrollView(
+        child: Form(
+          autovalidateMode: AutovalidateMode.onUnfocus,
+          key: _formKey,
+          child: Column(
+            children: [
+              if (_selectedImage != null && _selectedImage!.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.memory(_selectedImage!, height: 100),
+                  ),
                 ),
+              ElevatedButton.icon(
+                icon: const Icon(Icons.image),
+                label: const Text("Upload Image"),
+                onPressed: _pickImage,
               ),
-            ElevatedButton.icon(
-              icon: const Icon(Icons.image),
-              label: const Text("Upload Image"),
-              onPressed: _pickImage,
-            ),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: _nameController,
-              decoration: const InputDecoration(
-                labelText: "Name",
-                border: OutlineInputBorder(),
-                hintText: "Enter category name",
+              const SizedBox(height: 16),
+              TextFormField(
+                controller: _nameController,
+                decoration: const InputDecoration(
+                  labelText: "Name",
+                  border: OutlineInputBorder(),
+                  hintText: "Enter category name",
+                ),
+                validator: (final value) =>
+                    TextValidators.required(value, fieldName: "Name"),
               ),
-              validator: (final value) =>
-                  TextValidators.required(value, fieldName: "Name"),
-            ),
-            const SizedBox(height: 16),
-            TextFormField(
-              controller: _descriptionController,
-              decoration: const InputDecoration(
-                labelText: "Description",
-                border: OutlineInputBorder(),
-                hintText: "Enter category description",
+              const SizedBox(height: 16),
+              TextFormField(
+                controller: _descriptionController,
+                decoration: const InputDecoration(
+                  labelText: "Description",
+                  border: OutlineInputBorder(),
+                  hintText: "Enter category description",
+                ),
+                validator: (final value) =>
+                    TextValidators.required(value, fieldName: "Description"),
               ),
-              validator: (final value) =>
-                  TextValidators.required(value, fieldName: "Description"),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     ),
