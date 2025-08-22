@@ -1,4 +1,3 @@
-// work on this next
 import "package:flutter/material.dart";
 
 /// DeleteCategoryDialog: Dialog for deleting a category
