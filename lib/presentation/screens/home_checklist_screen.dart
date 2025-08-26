@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:logger/logger.dart";
 import "package:provider/provider.dart";
 import "package:tabemashou/core/utils/log/logger.dart";
 import "package:tabemashou/domain/checklist_item/checklist_item.dart";
