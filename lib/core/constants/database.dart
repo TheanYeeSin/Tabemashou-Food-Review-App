@@ -18,3 +18,13 @@ const TABLE_CATEGORY_CREATE_SQL =
       image BLOB,
       order_index INTEGER NOT NULL)
     """;
+
+// ----- Checklist Items -----
+const TABLE_CHECKLIST_ITEM = "checklistItems";
+const TABLE_CHECKLIST_ITEM_CREATE_SQL =
+    """
+    CREATE TABLE $TABLE_CHECKLIST_ITEM (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      isChecked INTEGER NOT NULL)
+    """;

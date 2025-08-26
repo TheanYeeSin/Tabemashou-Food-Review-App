@@ -28,5 +28,6 @@ class AppDatabase {
   // ----- Database Creation -----
   Future<void> _createDb(final Database db, final int version) async {
     await db.execute(TABLE_CATEGORY_CREATE_SQL);
+    await db.execute(TABLE_CHECKLIST_ITEM_CREATE_SQL);
   }
 }
