@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:tabemashou/core/type/checklist.dart";
 import "package:tabemashou/domain/checklist_item/checklist_item.dart";
 import "package:tabemashou/domain/checklist_item/checklist_item_repository.dart";
 
@@ -10,10 +11,20 @@ class ChecklistItemProvider extends ChangeNotifier {
   // ----- State -----
   List<ChecklistItem> _checklistItems = [];
   bool _loading = false;
+  ChecklistItemFilterMode _filterMode = ChecklistItemFilterMode.unchecked;
 
   // ----- Getters -----
   List<ChecklistItem> get checklistItems => List.unmodifiable(_checklistItems);
   bool get loading => _loading;
+  ChecklistItemFilterMode get filterMode => _filterMode;
+
+  // ----- Setters -----
+  void setFilterMode(final ChecklistItemFilterMode mode) {
+    if (_filterMode != mode) {
+      _filterMode = mode;
+      notifyListeners();
+    }
+  }
 
   // ----- Read -----
   Future<void> loadChecklistItems() async {
@@ -24,6 +35,24 @@ class ChecklistItemProvider extends ChangeNotifier {
 
     _loading = false;
     notifyListeners();
+  }
+
+  List<ChecklistItem> loadFilteredChecklistItems({
+    final ChecklistItemFilterMode? filterMode,
+  }) {
+    final mode = filterMode ?? _filterMode;
+    final filtered = List.of(_checklistItems);
+
+    switch (mode) {
+      case ChecklistItemFilterMode.all:
+        break;
+      case ChecklistItemFilterMode.checked:
+        filtered.removeWhere((final item) => !item.isChecked);
+      case ChecklistItemFilterMode.unchecked:
+        filtered.removeWhere((final item) => item.isChecked);
+    }
+
+    return filtered;
   }
 
   // ----- Create -----

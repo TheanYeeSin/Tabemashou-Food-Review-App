@@ -88,8 +88,7 @@ class _HomeChecklistScreenState extends State<HomeChecklistScreen> {
   @override
   Widget build(final BuildContext context) => Consumer<ChecklistItemProvider>(
     builder: (final context, final provider, final child) {
-      final checklistItems = provider.checklistItems;
-
+      final checklistItems = provider.loadFilteredChecklistItems();
       return Scaffold(
         appBar: AppBar(
           title: const Text("Checklist"),
@@ -119,6 +118,7 @@ class _HomeChecklistScreenState extends State<HomeChecklistScreen> {
                   itemCount: checklistItems.length,
                   itemBuilder: (final context, final index) =>
                       ChecklistDisplayListItem(
+                        key: ValueKey(checklistItems[index].id),
                         onCheck: _checkItem,
                         onLongPress: _editChecklistItem,
                         onDelete: _deleteChecklistItem,

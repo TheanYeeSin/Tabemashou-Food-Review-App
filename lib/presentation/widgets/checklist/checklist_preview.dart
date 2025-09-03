@@ -1,17 +1,19 @@
 import "package:flutter/material.dart";
+import "package:tabemashou/domain/checklist_item/checklist_item.dart";
 
 class ChecklistPreview extends StatelessWidget {
-  static const checklist = ["Burger Town", "Sushi Zen", "Taco Fiesta"];
-  const ChecklistPreview({super.key});
+  final List<ChecklistItem> checklistItems;
+  const ChecklistPreview({super.key, required this.checklistItems});
 
   @override
   Widget build(final BuildContext context) => Column(
-    children: checklist
+    children: checklistItems
         .map(
           (final item) => Card(
             margin: const EdgeInsets.only(bottom: 8),
             child: ListTile(
-              title: Text(item),
+              key: ValueKey(item.id),
+              title: Text(item.name),
               leading: const Icon(Icons.location_on, color: Colors.redAccent),
               trailing: const Icon(Icons.chevron_right),
               // onTap: () => Navigator.pushNamed(context, '/checklist'),

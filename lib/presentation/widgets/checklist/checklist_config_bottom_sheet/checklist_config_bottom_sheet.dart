@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:tabemashou/presentation/widgets/checklist/checklist_config_bottom_sheet/checklist_config_filter_view.dart";
 
 enum ConfigView { filter, sort, layout }
 
@@ -13,7 +14,7 @@ class ChecklistConfigBottomSheet extends StatefulWidget {
 class _ChecklistConfigBottomSheetState
     extends State<ChecklistConfigBottomSheet> {
   // ----- States -----
-  ConfigView configView = ConfigView.sort;
+  ConfigView configView = ConfigView.filter;
 
   // ----- Build -----
   @override
@@ -47,9 +48,9 @@ class _ChecklistConfigBottomSheetState
         const SizedBox(height: 16),
 
         // ----- Conditionally Render -----
-        if (configView == ConfigView.filter)
-          ...[]
-        else if (configView == ConfigView.sort)
+        if (configView == ConfigView.filter) ...[
+          const ChecklistConfigFilterView(),
+        ] else if (configView == ConfigView.sort)
           ...[]
         else if (configView == ConfigView.layout)
           ...[],

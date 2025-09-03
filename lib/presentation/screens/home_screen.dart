@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "package:tabemashou/core/constants/path.dart";
+import "package:tabemashou/core/type/checklist.dart";
 import "package:tabemashou/presentation/providers/category_provider.dart";
+import "package:tabemashou/presentation/providers/checklist_item_provider.dart";
 import "package:tabemashou/presentation/widgets/category/category_carousel.dart";
 import "package:tabemashou/presentation/widgets/checklist/checklist_preview.dart";
 import "package:tabemashou/presentation/widgets/common/section_title.dart";
@@ -15,9 +17,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(final BuildContext context) {
     final greeting = _getGreeting();
 
-    return Consumer<CategoryProvider>(
-      builder: (final context, final provider, final child) {
-        final categories = provider.categories;
+    return Consumer2<CategoryProvider, ChecklistItemProvider>(
+      builder: (final context, final provider1, final provider2, final child) {
+        final categories = provider1.categories;
+        final checklistItems = provider2.loadFilteredChecklistItems(
+          filterMode: ChecklistItemFilterMode.unchecked,
+        );
         return Scaffold(
           appBar: AppBar(title: Text("$greeting👋"), elevation: 0),
           body: SingleChildScrollView(
@@ -46,7 +51,7 @@ class HomeScreen extends StatelessWidget {
 
                 // ----- Checklist -----
                 const SectionTitle(title: "Checklist", path: CHECKLIST_PATH),
-                const ChecklistPreview(),
+                ChecklistPreview(checklistItems: checklistItems),
                 const SizedBox(height: 20),
 
                 // To-do: Recommendation based on last ate + favourite + categories
