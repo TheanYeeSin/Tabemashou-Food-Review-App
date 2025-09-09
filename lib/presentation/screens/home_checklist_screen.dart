@@ -48,6 +48,7 @@ class _HomeChecklistScreenState extends State<HomeChecklistScreen> {
       id: checklistItem.id,
       name: result["name"],
       isChecked: checklistItem.isChecked,
+      createdAt: checklistItem.createdAt,
     );
 
     await provider.update(newChecklistItem);
@@ -63,6 +64,7 @@ class _HomeChecklistScreenState extends State<HomeChecklistScreen> {
       id: checklistItem.id,
       name: checklistItem.name,
       isChecked: !checklistItem.isChecked,
+      createdAt: checklistItem.createdAt,
     );
 
     await provider.update(newChecklistItem);

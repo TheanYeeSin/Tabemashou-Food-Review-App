@@ -15,9 +15,13 @@ class ChecklistItemLocalSource {
   // ----- Create -----
   Future<void> create(final ChecklistItem item) async {
     final db = await AppDatabase().database;
+    final itemWithTimestamp = item.copyWith(
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+    );
     await db.insert(
       TABLE_CHECKLIST_ITEM,
-      item.toMap(),
+      itemWithTimestamp.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
@@ -25,9 +29,10 @@ class ChecklistItemLocalSource {
   // ----- Update -----
   Future<void> update(final ChecklistItem item) async {
     final db = await AppDatabase().database;
+    final itemWithTimestamp = item.copyWith(updatedAt: DateTime.now());
     await db.update(
       TABLE_CHECKLIST_ITEM,
-      item.toMap(),
+      itemWithTimestamp.toMap(),
       where: "id = ?",
       whereArgs: [item.id],
       conflictAlgorithm: ConflictAlgorithm.replace,
