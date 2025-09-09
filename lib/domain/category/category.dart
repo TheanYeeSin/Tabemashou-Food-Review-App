@@ -8,6 +8,8 @@ class Category {
   final String description;
   final Uint8List? image;
   final int order;
+  final DateTime createdAt;
+  final DateTime updatedAt;
 
   // ----- Constructor -----
   Category({
@@ -16,7 +18,10 @@ class Category {
     required this.description,
     this.image,
     required this.order,
-  });
+    final DateTime? createdAt,
+    final DateTime? updatedAt,
+  }) : createdAt = createdAt ?? DateTime.now(),
+       updatedAt = updatedAt ?? DateTime.now();
 
   // ----- Copy with -----
   Category copyWith({
@@ -25,12 +30,16 @@ class Category {
     final String? description,
     final Uint8List? image,
     final int? order,
+    final DateTime? createdAt,
+    final DateTime? updatedAt,
   }) => Category(
     id: id ?? this.id,
     name: name ?? this.name,
     description: description ?? this.description,
     image: image ?? this.image,
     order: order ?? this.order,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
   );
 
   // ----- Serialization -----
@@ -39,7 +48,9 @@ class Category {
     name: map["name"] as String,
     description: map["description"] as String,
     image: map["image"] as Uint8List?,
-    order: map["order_index"] as int,
+    order: map["orderIndex"] as int,
+    createdAt: DateTime.parse(map["createdAt"] as String),
+    updatedAt: DateTime.parse(map["updatedAt"] as String),
   );
 
   Map<String, dynamic> toMap() => {
@@ -47,11 +58,13 @@ class Category {
     "name": name,
     "description": description,
     "image": image,
-    "order_index": order,
+    "orderIndex": order,
+    "createdAt": createdAt.toIso8601String(),
+    "updatedAt": updatedAt.toIso8601String(),
   };
 
   // ----- Debug -----
   @override
   String toString() =>
-      "Category(id: $id, name: $name, description: $description, image: $image, order: $order)";
+      "Category(id: $id, name: $name, description: $description, image: $image, order: $order, createdAt: $createdAt, updatedAt: $updatedAt)";
 }

@@ -8,7 +8,7 @@ class CategoryLocalSource {
   // ----- Read -----
   Future<List<Category>> getAll() async {
     final db = await AppDatabase().database;
-    final result = await db.query(TABLE_CATEGORY, orderBy: "order_index ASC");
+    final result = await db.query(TABLE_CATEGORY, orderBy: "orderIndex ASC");
 
     return result.map(Category.fromMap).toList();
   }
@@ -16,9 +16,13 @@ class CategoryLocalSource {
   // ----- Create -----
   Future<void> create(final Category category) async {
     final db = await AppDatabase().database;
+    final categoryWithTimestamp = category.copyWith(
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+    );
     await db.insert(
       TABLE_CATEGORY,
-      category.toMap(),
+      categoryWithTimestamp.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
@@ -26,9 +30,10 @@ class CategoryLocalSource {
   // ----- Update -----
   Future<void> update(final Category category) async {
     final db = await AppDatabase().database;
+    final categoryWithTimestamp = category.copyWith(updatedAt: DateTime.now());
     await db.update(
       TABLE_CATEGORY,
-      category.toMap(),
+      categoryWithTimestamp.toMap(),
       where: "id = ?",
       whereArgs: [category.id],
       conflictAlgorithm: ConflictAlgorithm.replace,
@@ -41,7 +46,7 @@ class CategoryLocalSource {
       for (final category in categories) {
         await txn.update(
           TABLE_CATEGORY,
-          category.toMap(),
+          category.copyWith(updatedAt: DateTime.now()).toMap(),
           where: "id = ?",
           whereArgs: [category.id],
           conflictAlgorithm: ConflictAlgorithm.replace,

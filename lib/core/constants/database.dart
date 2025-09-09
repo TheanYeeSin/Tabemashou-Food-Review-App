@@ -16,7 +16,9 @@ const TABLE_CATEGORY_CREATE_SQL =
       name TEXT NOT NULL,
       description TEXT NOT NULL,
       image BLOB,
-      order_index INTEGER NOT NULL)
+      orderIndex INTEGER NOT NULL,
+      createdAt TEXT NOT NULL,
+      updatedAt TEXT NOT NULL)
     """;
 
 // ----- Checklist Items -----

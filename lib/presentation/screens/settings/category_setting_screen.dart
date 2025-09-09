@@ -55,6 +55,7 @@ class _CategorySettingScreenState extends State<CategorySettingScreen> {
       description: result["description"],
       image: result["image"],
       order: category.order,
+      createdAt: category.createdAt,
     );
 
     await provider.update(newCategory);
