@@ -38,12 +38,12 @@ class _MoreScreenState extends State<MoreScreen> {
           ListTile(
             leading: const Icon(Icons.settings_outlined),
             title: const Text("Settings"),
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, SETTINGS_PATH),
           ),
           ListTile(
             leading: const Icon(Icons.info_outlined),
             title: const Text("About"),
-            onTap: () => Navigator.pushNamed(context, ABOUT_PATH)
+            onTap: () => Navigator.pushNamed(context, ABOUT_PATH),
           ),
           ListTile(
             leading: const Icon(Icons.help_outline),

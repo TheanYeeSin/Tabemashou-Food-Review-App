@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
+import "package:tabemashou/core/constants/path.dart";
 import "package:tabemashou/core/type/category.dart";
 import "package:tabemashou/presentation/providers/category_provider.dart";
 import "package:tabemashou/presentation/widgets/category/category_config_bottom_sheet/category_config_bottom_sheet.dart";
@@ -23,6 +24,13 @@ class _HomeCategoriesScreenState extends State<HomeCategoriesScreen> {
       final layout = provider.layoutMode;
 
       return Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed(REVIEW_FORM_PATH);
+          },
+
+          child: const Icon(Icons.add),
+        ),
         appBar: AppBar(
           title: const Text("Reviews"),
           centerTitle: true,

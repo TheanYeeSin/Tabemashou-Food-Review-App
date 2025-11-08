@@ -1,11 +1,11 @@
 import "package:flutter/material.dart";
 import "package:tabemashou/core/constants/path.dart";
 import "package:tabemashou/core/type/common.dart";
-import "package:tabemashou/presentation/screens/home_categories_screen.dart";
-import "package:tabemashou/presentation/screens/home_checklist_screen.dart";
-import "package:tabemashou/presentation/screens/home_screen.dart";
-import "package:tabemashou/presentation/screens/more_screen.dart";
-import "package:tabemashou/presentation/screens/random_restaurant_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/home_categories_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/home_checklist_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/home_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/more_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/random_restaurant_screen.dart";
 import "package:tabemashou/presentation/widgets/common/custom_nav_bar.dart";
 
 class MainNavigatorScreen extends StatefulWidget {
