@@ -20,6 +20,7 @@ class AppDatabase {
       path,
       version: DATABASE_VERSION,
       onCreate: _createDb,
+      onConfigure: _onConfigure,
     );
 
     return db;
@@ -27,7 +28,15 @@ class AppDatabase {
 
   // ----- Database Creation -----
   Future<void> _createDb(final Database db, final int version) async {
+    await db.execute(TABLE_REVIEW_CREATE_SQL);
     await db.execute(TABLE_CATEGORY_CREATE_SQL);
     await db.execute(TABLE_CHECKLIST_ITEM_CREATE_SQL);
+    await db.execute(TABLE_REVIEW_CATEGORY_CREATE_SQL);
+    await db.execute(TABLE_REVIEW_VISIT_CREATE_SQL);
+  }
+
+  // ----- Database Config -----
+  Future<void> _onConfigure(final Database db) async {
+    await db.execute(CONFIG_SQL);
   }
 }
