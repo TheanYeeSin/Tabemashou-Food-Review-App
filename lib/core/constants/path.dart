@@ -13,3 +13,4 @@ const CATEGORY_SETTINGS_PATH = "$SETTINGS_PATH/category";
 // ----- Reviews Paths -----
 const MAIN_REVIEW_PATH = "/reviews";
 const RANDOM_RESTAURANT_PATH = "$MAIN_REVIEW_PATH/random";
+const REVIEW_FORM_PATH = "$MAIN_REVIEW_PATH/form";
