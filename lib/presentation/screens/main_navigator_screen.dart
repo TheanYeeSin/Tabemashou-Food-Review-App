@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:tabemashou/core/constants/path.dart";
 import "package:tabemashou/core/type/common.dart";
-import "package:tabemashou/presentation/screens/tabs/home_categories_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/categories_screen.dart";
 import "package:tabemashou/presentation/screens/tabs/home_checklist_screen.dart";
 import "package:tabemashou/presentation/screens/tabs/home_screen.dart";
 import "package:tabemashou/presentation/screens/tabs/more_screen.dart";
@@ -34,7 +34,7 @@ class _MainNavigatorScreenState extends State<MainNavigatorScreen> {
       selectedIcon: Icons.reviews_rounded,
       label: "Reviews",
       path: MAIN_REVIEW_PATH,
-      screen: const HomeCategoriesScreen(),
+      screen: const CategoriesScreen(),
     ),
     NavBarItem(
       icon: Icons.home_outlined,

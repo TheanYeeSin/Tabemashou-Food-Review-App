@@ -9,14 +9,14 @@ import "package:tabemashou/presentation/widgets/category/category_display_grid_i
 import "package:tabemashou/presentation/widgets/category/category_display_list_item.dart";
 import "package:tabemashou/presentation/widgets/common/empty_placeholder_view.dart";
 
-class HomeCategoriesScreen extends StatefulWidget {
-  const HomeCategoriesScreen({super.key});
+class CategoriesScreen extends StatefulWidget {
+  const CategoriesScreen({super.key});
 
   @override
-  State<HomeCategoriesScreen> createState() => _HomeCategoriesScreenState();
+  State<CategoriesScreen> createState() => _CategoriesScreenState();
 }
 
-class _HomeCategoriesScreenState extends State<HomeCategoriesScreen> {
+class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(final BuildContext context) => Consumer<CategoryProvider>(
     builder: (final context, final provider, final child) {
