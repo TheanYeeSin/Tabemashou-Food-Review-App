@@ -10,13 +10,15 @@ import "package:tabemashou/domain/checklist_item/checklist_item_repository_impl.
 import "package:tabemashou/presentation/providers/category_provider.dart";
 import "package:tabemashou/presentation/providers/checklist_item_provider.dart";
 import "package:tabemashou/presentation/screens/about_screen.dart";
-import "package:tabemashou/presentation/screens/home_categories_screen.dart";
-import "package:tabemashou/presentation/screens/home_checklist_screen.dart";
-import "package:tabemashou/presentation/screens/home_screen.dart";
 import "package:tabemashou/presentation/screens/main_navigator_screen.dart";
-import "package:tabemashou/presentation/screens/more_screen.dart";
-import "package:tabemashou/presentation/screens/random_restaurant_screen.dart";
+import "package:tabemashou/presentation/screens/reviews/review_form_screen.dart";
 import "package:tabemashou/presentation/screens/settings/category_setting_screen.dart";
+import "package:tabemashou/presentation/screens/settings/settings_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/categories_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/home_checklist_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/home_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/more_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/random_restaurant_screen.dart";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +37,10 @@ void main() async {
     local: checklistLocalSource,
   );
 
+  // // ----- Review Source -----
+  // final reviewLocalSource = ReviewLocalSource();
+  // final reviewRepository = ReviewRepositoryImpl(local: reviewLocalSource);
+
   runApp(
     MultiProvider(
       providers: [
@@ -48,6 +54,10 @@ void main() async {
               ChecklistItemProvider(repository: checklistRepository)
                 ..loadChecklistItems(),
         ),
+        // ChangeNotifierProvider(
+        //   create: (_) =>
+        //       ReviewProvider(repository: reviewRepository)..loadReviews(),
+        // ),
       ],
       child: const MyApp(),
     ),
@@ -67,10 +77,12 @@ class MyApp extends StatelessWidget {
       HOME_PATH: (final context) => const HomeScreen(),
       ABOUT_PATH: (final context) => const AboutScreen(),
       MORE_PATH: (final context) => const MoreScreen(),
-      MAIN_REVIEW_PATH: (final context) => const HomeCategoriesScreen(),
+      MAIN_REVIEW_PATH: (final context) => const CategoriesScreen(),
       RANDOM_RESTAURANT_PATH: (final context) => const RandomRestaurantScreen(),
       CHECKLIST_PATH: (final context) => const HomeChecklistScreen(),
+      SETTINGS_PATH: (final context) => const SettingsScreen(),
       CATEGORY_SETTINGS_PATH: (final context) => const CategorySettingScreen(),
+      REVIEW_FORM_PATH: (final context) => const ReviewFormScreen(),
     },
   );
 }
