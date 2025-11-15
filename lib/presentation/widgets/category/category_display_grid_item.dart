@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:tabemashou/domain/category/category.dart";
+import "package:tabemashou/presentation/screens/reviews/reviews_screen.dart";
 
 class CategoryDisplayGridItem extends StatelessWidget {
   final Category category;
@@ -15,8 +16,15 @@ class CategoryDisplayGridItem extends StatelessWidget {
       elevation: 5,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       clipBehavior: Clip.antiAlias,
+
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (final context) => ReviewsScreen(title: category.name),
+            ),
+          );
+        },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

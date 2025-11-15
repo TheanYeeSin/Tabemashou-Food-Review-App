@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:tabemashou/domain/category/category.dart";
+import "package:tabemashou/presentation/screens/reviews/reviews_screen.dart";
 
 class CategoryDisplayCardItem extends StatelessWidget {
   final Category category;
@@ -16,7 +17,13 @@ class CategoryDisplayCardItem extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (final context) => ReviewsScreen(title: category.name),
+            ),
+          );
+        },
         child: IntrinsicHeight(
           child: Row(
             children: [
