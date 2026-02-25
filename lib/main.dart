@@ -1,52 +1,91 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:foodreviewapp/l10n/l10n.dart';
-import 'package:foodreviewapp/utils/style.dart';
-import 'package:foodreviewapp/utils/language.dart';
-import 'package:provider/provider.dart';
-import 'package:foodreviewapp/utils/notification.dart';
-import 'l10n/app_localizations.dart';
-import 'package:foodreviewapp/utils/display.dart';
-import 'package:foodreviewapp/screens/splash_screen.dart';
+import "package:flutter/material.dart";
+import "package:provider/provider.dart";
+import "package:tabemashou/core/constants/path.dart";
+import "package:tabemashou/core/theme/theme.dart";
+import "package:tabemashou/core/utils/log/logger.dart";
+import "package:tabemashou/data/category/category_local_source.dart";
+import "package:tabemashou/data/checklist_item/checklist_item_local_source.dart";
+import "package:tabemashou/data/review/review_local_source.dart";
+import "package:tabemashou/domain/category/category_repository_impl.dart";
+import "package:tabemashou/domain/checklist_item/checklist_item_repository_impl.dart";
+import "package:tabemashou/domain/review/review_repository_impl.dart";
+import "package:tabemashou/presentation/providers/category_provider.dart";
+import "package:tabemashou/presentation/providers/checklist_item_provider.dart";
+import "package:tabemashou/presentation/providers/review_provider.dart";
+import "package:tabemashou/presentation/screens/about_screen.dart";
+import "package:tabemashou/presentation/screens/main_navigator_screen.dart";
+import "package:tabemashou/presentation/screens/reviews/review_form_screen.dart";
+import "package:tabemashou/presentation/screens/settings/category_setting_screen.dart";
+import "package:tabemashou/presentation/screens/settings/settings_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/categories_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/home_checklist_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/home_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/more_screen.dart";
+import "package:tabemashou/presentation/screens/tabs/random_restaurant_screen.dart";
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  NotificationManager.initialize();
+
+  // ----- Logger -----
+  await LoggerService.init();
+  LoggerService.logInfo("App started");
+
+  // ----- Category Source -----
+  final categoryLocalSource = CategoryLocalSource();
+  final categoryRepository = CategoryRepositoryImpl(local: categoryLocalSource);
+
+  // ----- Checklist Item Source -----
+  final checklistLocalSource = ChecklistItemLocalSource();
+  final checklistRepository = ChecklistItemRepositoryImpl(
+    local: checklistLocalSource,
+  );
+
+  // // ----- Review Source -----
+  final reviewLocalSource = ReviewLocalSource();
+  final reviewRepository = ReviewRepositoryImpl(local: reviewLocalSource);
+
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => ThemeManager()),
-        ChangeNotifierProvider(create: (context) => LanguageManager()),
-        ChangeNotifierProvider(create: (context) => DisplayManager()),
+        ChangeNotifierProvider(
+          create: (_) =>
+              CategoryProvider(repository: categoryRepository)
+                ..loadCategories(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) =>
+              ChecklistItemProvider(repository: checklistRepository)
+                ..loadChecklistItems(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) =>
+              ReviewProvider(repository: reviewRepository)..loadReviews(),
+        ),
       ],
       child: const MyApp(),
     ),
   );
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const SplashScreen(),
-      theme: lightTheme(context),
-      darkTheme: darkTheme(context),
-      themeMode: context.watch<ThemeManager>().themeMode,
-      supportedLocales: L10n.all,
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      locale: context.watch<LanguageManager>().locale,
-    );
-  }
+  Widget build(final BuildContext context) => MaterialApp(
+    title: "Tabemashou",
+    theme: TAppTheme.lightTheme(),
+    darkTheme: TAppTheme.darkTheme(),
+    home: const MainNavigatorScreen(),
+    routes: {
+      HOME_PATH: (final context) => const HomeScreen(),
+      ABOUT_PATH: (final context) => const AboutScreen(),
+      MORE_PATH: (final context) => const MoreScreen(),
+      MAIN_REVIEW_PATH: (final context) => const CategoriesScreen(),
+      RANDOM_RESTAURANT_PATH: (final context) => const RandomRestaurantScreen(),
+      CHECKLIST_PATH: (final context) => const HomeChecklistScreen(),
+      SETTINGS_PATH: (final context) => const SettingsScreen(),
+      CATEGORY_SETTINGS_PATH: (final context) => const CategorySettingScreen(),
+      REVIEW_FORM_PATH: (final context) => const ReviewFormScreen(),
+    },
+  );
 }

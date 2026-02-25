@@ -23,28 +23,6 @@ Open an Android Emulator
 flutter run
 ```
 
-## Functions
-
-- Add new reviews
-- Edit reviews
-- Delete reviews
-- Add/Edit/Delete new categories
-- Search Review
-- Sort Review
-- Restaurant Checklist
-- Random restaurant
-- Add Favourite
-- Backup/Restore database
-- Light/Dark theme
-- Display method
-- Daily Reminder
-- Different Languages
-
-## Screenshots
-
-![image](https://github.com/TheanYeeSin/Flutter-Food-Review-App/assets/68727045/03983f3a-db77-40b5-a7a6-47335b617f70)
-![image](https://github.com/TheanYeeSin/Flutter-Food-Review-App/assets/68727045/f0289afa-dec2-4b15-ae3f-06a84ca5b5ff)
-
 ## Privacy Policy 
 
 Tabemashou respects your privacy and is committed to protecting any information that you may provide while using our application. This Privacy Policy outlines how we collect, use disclose, and store your information. By using Tabemashou, you consent to the terms outlined in this Privacy Policy.
