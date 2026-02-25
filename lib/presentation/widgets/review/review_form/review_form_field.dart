@@ -6,6 +6,7 @@ class ReviewFormField extends StatelessWidget {
   final bool? required;
   final int? maxLines;
   final Widget? prefixIcon;
+  final String? Function(String?)? validator;
 
   const ReviewFormField({
     super.key,
@@ -14,6 +15,7 @@ class ReviewFormField extends StatelessWidget {
     this.required = false,
     this.maxLines = 1,
     this.prefixIcon,
+    this.validator,
   });
 
   @override
@@ -22,6 +24,7 @@ class ReviewFormField extends StatelessWidget {
     child: TextFormField(
       controller: controller,
       maxLines: maxLines,
+      validator: validator,
       decoration: InputDecoration(
         prefixIcon: prefixIcon,
         labelText: label,

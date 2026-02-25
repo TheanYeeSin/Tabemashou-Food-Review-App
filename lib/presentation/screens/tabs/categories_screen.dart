@@ -2,7 +2,9 @@ import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "package:tabemashou/core/constants/path.dart";
 import "package:tabemashou/core/type/category.dart";
+import "package:tabemashou/domain/review/review.dart";
 import "package:tabemashou/presentation/providers/category_provider.dart";
+import "package:tabemashou/presentation/providers/review_provider.dart";
 import "package:tabemashou/presentation/widgets/category/category_config_bottom_sheet/category_config_bottom_sheet.dart";
 import "package:tabemashou/presentation/widgets/category/category_display_card_item.dart";
 import "package:tabemashou/presentation/widgets/category/category_display_grid_item.dart";
@@ -25,8 +27,24 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
 
       return Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.of(context).pushNamed(REVIEW_FORM_PATH);
+          onPressed: () async {
+            final result = await Navigator.of(
+              context,
+            ).pushNamed(REVIEW_FORM_PATH);
+
+            // If user cancelled the form
+            if (result == null) return;
+
+            // Safely cast
+            final review = result as Review;
+
+            debugPrint(review.toString());
+
+            // Avoid context after async gap: check mounted
+            if (!mounted) return;
+
+            // Add review using provider
+            context.read<ReviewProvider>().create(review);
           },
 
           child: const Icon(Icons.add),

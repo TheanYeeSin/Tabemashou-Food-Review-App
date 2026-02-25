@@ -5,10 +5,13 @@ import "package:tabemashou/core/theme/theme.dart";
 import "package:tabemashou/core/utils/log/logger.dart";
 import "package:tabemashou/data/category/category_local_source.dart";
 import "package:tabemashou/data/checklist_item/checklist_item_local_source.dart";
+import "package:tabemashou/data/review/review_local_source.dart";
 import "package:tabemashou/domain/category/category_repository_impl.dart";
 import "package:tabemashou/domain/checklist_item/checklist_item_repository_impl.dart";
+import "package:tabemashou/domain/review/review_repository_impl.dart";
 import "package:tabemashou/presentation/providers/category_provider.dart";
 import "package:tabemashou/presentation/providers/checklist_item_provider.dart";
+import "package:tabemashou/presentation/providers/review_provider.dart";
 import "package:tabemashou/presentation/screens/about_screen.dart";
 import "package:tabemashou/presentation/screens/main_navigator_screen.dart";
 import "package:tabemashou/presentation/screens/reviews/review_form_screen.dart";
@@ -38,8 +41,8 @@ void main() async {
   );
 
   // // ----- Review Source -----
-  // final reviewLocalSource = ReviewLocalSource();
-  // final reviewRepository = ReviewRepositoryImpl(local: reviewLocalSource);
+  final reviewLocalSource = ReviewLocalSource();
+  final reviewRepository = ReviewRepositoryImpl(local: reviewLocalSource);
 
   runApp(
     MultiProvider(
@@ -54,10 +57,10 @@ void main() async {
               ChecklistItemProvider(repository: checklistRepository)
                 ..loadChecklistItems(),
         ),
-        // ChangeNotifierProvider(
-        //   create: (_) =>
-        //       ReviewProvider(repository: reviewRepository)..loadReviews(),
-        // ),
+        ChangeNotifierProvider(
+          create: (_) =>
+              ReviewProvider(repository: reviewRepository)..loadReviews(),
+        ),
       ],
       child: const MyApp(),
     ),

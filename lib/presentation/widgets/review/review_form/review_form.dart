@@ -3,6 +3,7 @@ import "dart:typed_data";
 import "package:flutter/material.dart";
 import "package:image_picker/image_picker.dart";
 import "package:intl/intl.dart";
+import "package:tabemashou/core/validators/text_validators.dart";
 import "package:tabemashou/domain/review/review.dart";
 import "package:tabemashou/presentation/widgets/review/review_form/review_form_chip_input.dart";
 import "package:tabemashou/presentation/widgets/review/review_form/review_form_field.dart";
@@ -20,6 +21,7 @@ class ReviewForm extends StatefulWidget {
 }
 
 class _ReviewFormState extends State<ReviewForm> {
+  final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _locationController = TextEditingController();
   final _descriptionController = TextEditingController();
@@ -43,7 +45,7 @@ class _ReviewFormState extends State<ReviewForm> {
     if (review != null) {
       _nameController.text = review.restaurantName;
       _locationController.text = review.restaurantLocation;
-      _descriptionController.text = review.restaurantDescription ?? "";
+      _descriptionController.text = review.restaurantDescription;
       _additionalController.text = review.additionalReview ?? "";
       _openingHoursController.text = review.openingHours ?? "";
       _isFavourite = review.isFavourite;
@@ -86,12 +88,8 @@ class _ReviewFormState extends State<ReviewForm> {
   }
 
   void _submit() {
-    if (_nameController.text.trim().isEmpty ||
-        _locationController.text.trim().isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Please fill in all required fields.")),
-      );
-      return;
+    if (!_formKey.currentState!.validate()) {
+      return; // <-- stops submission
     }
 
     final newReview = Review(
@@ -119,6 +117,7 @@ class _ReviewFormState extends State<ReviewForm> {
   @override
   Widget build(final BuildContext context) => Scaffold(
     body: Form(
+      key: _formKey,
       child: ListView(
         padding: const EdgeInsets.all(16),
         children: [
@@ -130,16 +129,25 @@ class _ReviewFormState extends State<ReviewForm> {
                 prefixIcon: const Icon(Icons.restaurant_outlined),
                 label: "Restaurant Name",
                 required: true,
+                validator: TextValidators.combine([
+                  (v) =>
+                      TextValidators.required(v, fieldName: "Restaurant Name"),
+                ]),
               ),
               ReviewFormField(
                 controller: _locationController,
                 label: "Location",
                 prefixIcon: const Icon(Icons.location_on_outlined),
+                required: true,
+                validator: TextValidators.combine([
+                  (v) => TextValidators.required(v, fieldName: "Location"),
+                ]),
               ),
               ReviewFormField(
                 controller: _descriptionController,
                 label: "Description",
                 prefixIcon: const Icon(Icons.description_outlined),
+                validator: TextValidators.required,
                 maxLines: 2,
               ),
             ],
@@ -275,7 +283,7 @@ class _ReviewFormState extends State<ReviewForm> {
               borderRadius: BorderRadius.circular(12),
             ),
           ),
-          onPressed: () {},
+          onPressed: _submit,
           icon: const Icon(Icons.check),
           label: const Text("Save Review"),
         ),

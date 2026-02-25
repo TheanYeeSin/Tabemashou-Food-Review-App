@@ -1,19 +1,20 @@
 import "package:flutter/material.dart";
-import "package:tabemashou/presentation/widgets/review/review_config_bottom_sheet/review_config_layout_view.dart";
+import "package:tabemashou/presentation/widgets/category/category_config_bottom_sheet/category_config_layout_view.dart";
+import "package:tabemashou/presentation/widgets/category/category_config_bottom_sheet/category_config_sort_view.dart";
 
-enum ConfigView { filter, sort, layout }
+enum ConfigView { sort, layout }
 
-class ReviewConfigBottomSheet extends StatefulWidget {
-  const ReviewConfigBottomSheet({super.key});
+class CategoryConfigBottomSheet extends StatefulWidget {
+  const CategoryConfigBottomSheet({super.key});
 
   @override
-  State<ReviewConfigBottomSheet> createState() =>
-      _ReviewConfigBottomSheetState();
+  State<CategoryConfigBottomSheet> createState() =>
+      _CategoryConfigBottomSheetState();
 }
 
-class _ReviewConfigBottomSheetState extends State<ReviewConfigBottomSheet> {
+class _CategoryConfigBottomSheetState extends State<CategoryConfigBottomSheet> {
   // ----- States -----
-  ConfigView configView = ConfigView.filter;
+  ConfigView configView = ConfigView.sort;
 
   // ----- Build -----
   @override
@@ -24,11 +25,6 @@ class _ReviewConfigBottomSheetState extends State<ReviewConfigBottomSheet> {
       children: [
         SegmentedButton<ConfigView>(
           segments: const <ButtonSegment<ConfigView>>[
-            ButtonSegment<ConfigView>(
-              value: ConfigView.filter,
-              label: Text("Filter"),
-              icon: Icon(Icons.filter_list_outlined),
-            ),
             ButtonSegment<ConfigView>(
               value: ConfigView.sort,
               label: Text("Sort"),
@@ -47,11 +43,10 @@ class _ReviewConfigBottomSheetState extends State<ReviewConfigBottomSheet> {
         const SizedBox(height: 16),
 
         // ----- Conditionally Render -----
-        if (configView == ConfigView.sort)
-          ...[
-          
+        if (configView == ConfigView.sort) ...[
+          const CategoryConfigSortView(),
         ] else if (configView == ConfigView.layout) ...[
-          const ReviewConfigLayoutView(),
+          const CategoryConfigLayoutView(),
         ],
       ],
     ),

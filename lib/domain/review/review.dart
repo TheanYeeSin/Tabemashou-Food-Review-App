@@ -102,6 +102,27 @@ class Review {
     image: map["image"],
     openingHours: map["openingHours"],
   );
+
+  @override
+  String toString() =>
+      '''
+Review(
+  id: $id,
+  restaurantName: $restaurantName,
+  restaurantLocation: $restaurantLocation,
+  restaurantDescription: $restaurantDescription,
+  foodAvailable: $foodAvailable,
+  rating: $rating,
+  additionalReview: $additionalReview,
+  isFavourite: $isFavourite,
+  isBlacklisted: $isBlacklisted,
+  image: ${image != null ? "[${image!.lengthInBytes} bytes]" : "null"},
+  openingHours: $openingHours,
+  categoryIds: $categoryIds,
+  visitHistory: $visitHistory,
+  createdAt: $createdAt,
+  updatedAt: $updatedAt
+)''';
 }
 
 class Visit {

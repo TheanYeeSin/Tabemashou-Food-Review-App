@@ -1,7 +1,12 @@
 import "package:flutter/material.dart";
-import "package:tabemashou/domain/review/review.dart";
+import "package:provider/provider.dart";
+import "package:tabemashou/core/type/review.dart";
+import "package:tabemashou/presentation/providers/review_provider.dart";
 import "package:tabemashou/presentation/widgets/common/empty_placeholder_view.dart";
 import "package:tabemashou/presentation/widgets/review/review_config_bottom_sheet/review_config_bottom_sheet.dart";
+import "package:tabemashou/presentation/widgets/review/review_display_card_item.dart";
+import "package:tabemashou/presentation/widgets/review/review_display_grid_item.dart";
+import "package:tabemashou/presentation/widgets/review/review_display_list_item.dart";
 
 class ReviewsScreen extends StatefulWidget {
   final String title;
@@ -12,127 +17,57 @@ class ReviewsScreen extends StatefulWidget {
 }
 
 class _ReviewsScreenState extends State<ReviewsScreen> {
-  final List<Review> reviews = sampleReviews;
-
   @override
-  Widget build(final BuildContext context) => Scaffold(
-    appBar: AppBar(
-      title: Text(widget.title),
-      centerTitle: true,
-      actions: [
-        IconButton(
-          onPressed: () => showModalBottomSheet<void>(
-            context: context,
-            builder: (final BuildContext context) =>
-                const ReviewConfigBottomSheet(),
-          ),
-          icon: const Icon(Icons.tune_outlined),
-        ),
-      ],
-    ),
-    body: reviews.isEmpty
-        ? const EmptyPlaceholderView(
-            message: "No review found, add one in the settings",
-          )
-        : ListView.separated(
-            padding: const EdgeInsets.all(12),
-            itemCount: reviews.length,
-            separatorBuilder: (_, __) => const SizedBox(height: 10),
-            itemBuilder: (context, index) {
-              final review = reviews[index];
-              return ReviewListItem(
-                review: review,
-                onTap: () {
-                  // TODO: Navigate to detail screen
-                },
-              );
-            },
-          ),
-  );
-}
-
-class ReviewListItem extends StatelessWidget {
-  final Review review;
-  final VoidCallback? onTap;
-
-  const ReviewListItem({super.key, required this.review, this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Card(
-        elevation: 2,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        child: Row(
-          children: [
-            // Thumbnail
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(12),
-                bottomLeft: Radius.circular(12),
+  Widget build(final BuildContext context) => Consumer<ReviewProvider>(
+    builder: (final context, final provider, final child) {
+      final reviews = provider.loadSortedReviews();
+      final layout = provider.layoutMode;
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              onPressed: () => showModalBottomSheet<void>(
+                context: context,
+                builder: (final BuildContext context) =>
+                    const ReviewConfigBottomSheet(),
               ),
-              child: Image.memory(
-                review.image!,
-                width: 100,
-                height: 100,
-                fit: BoxFit.cover,
-              ),
-            ),
-
-            // Info section
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Name and favourite icon
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            review.restaurantName,
-                            style: Theme.of(context).textTheme.titleMedium
-                                ?.copyWith(fontWeight: FontWeight.w600),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        if (review.isFavourite)
-                          const Icon(Icons.favorite, color: Colors.redAccent),
-                      ],
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      review.restaurantLocation,
-                      style: Theme.of(
-                        context,
-                      ).textTheme.bodySmall?.copyWith(color: Colors.grey[600]),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: 6),
-
-                    // Rating
-                    Row(
-                      children: [
-                        const Icon(Icons.star, size: 16, color: Colors.amber),
-                        const SizedBox(width: 4),
-                        Text(
-                          review.rating.toStringAsFixed(1),
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              icon: const Icon(Icons.tune_outlined),
             ),
           ],
         ),
-      ),
-    );
-  }
+        body: reviews.isEmpty
+            ? const EmptyPlaceholderView(
+                message: "No review found, add one in the settings",
+              )
+            : Padding(
+                padding: const EdgeInsets.all(16),
+                child: switch (layout) {
+                  ReviewLayoutMode.list => ListView.builder(
+                    itemCount: reviews.length,
+                    itemBuilder: (final context, final index) =>
+                        ReviewDisplayListItem(review: reviews[index]),
+                  ),
+                  ReviewLayoutMode.card => ListView.builder(
+                    itemCount: reviews.length,
+                    itemBuilder: (final context, final index) =>
+                        ReviewDisplayCardItem(review: reviews[index]),
+                  ),
+                  ReviewLayoutMode.grid => GridView.builder(
+                    itemCount: reviews.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 4,
+                          mainAxisSpacing: 4,
+                        ),
+                    itemBuilder: (final context, final index) =>
+                        ReviewDisplayGridItem(review: reviews[index]),
+                  ),
+                },
+              ),
+      );
+    },
+  );
 }
