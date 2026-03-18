@@ -3,12 +3,12 @@ import "package:provider/provider.dart";
 import "package:tabemashou/core/constants/path.dart";
 import "package:tabemashou/core/type/category.dart";
 import "package:tabemashou/domain/review/review.dart";
-import "package:tabemashou/presentation/providers/category_provider.dart";
+import "package:tabemashou/features/category/presentation/providers/category_provider.dart";
+import "package:tabemashou/features/category/presentation/widgets/category_config_bottom_sheet/category_config_bottom_sheet.dart";
+import "package:tabemashou/features/category/presentation/widgets/category_display_card_item.dart";
+import "package:tabemashou/features/category/presentation/widgets/category_display_grid_item.dart";
+import "package:tabemashou/features/category/presentation/widgets/category_display_list_item.dart";
 import "package:tabemashou/presentation/providers/review_provider.dart";
-import "package:tabemashou/presentation/widgets/category/category_config_bottom_sheet/category_config_bottom_sheet.dart";
-import "package:tabemashou/presentation/widgets/category/category_display_card_item.dart";
-import "package:tabemashou/presentation/widgets/category/category_display_grid_item.dart";
-import "package:tabemashou/presentation/widgets/category/category_display_list_item.dart";
 import "package:tabemashou/presentation/widgets/common/empty_placeholder_view.dart";
 
 class CategoriesScreen extends StatefulWidget {

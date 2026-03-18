@@ -2,7 +2,7 @@ import "dart:typed_data";
 import "package:flutter/material.dart";
 import "package:image_picker/image_picker.dart";
 import "package:tabemashou/core/validators/text_validators.dart";
-import "package:tabemashou/domain/category/category.dart";
+import "package:tabemashou/features/category/domain/category.dart";
 
 /// CategoryDialog: Dialog for adding/editing a category
 class CategoryDialog extends StatefulWidget {

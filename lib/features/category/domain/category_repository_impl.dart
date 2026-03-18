@@ -1,6 +1,6 @@
-import "package:tabemashou/data/category/category_local_source.dart";
-import "package:tabemashou/domain/category/category.dart";
-import "package:tabemashou/domain/category/category_repository.dart";
+import "package:tabemashou/features/category/data/category_local_source.dart";
+import "package:tabemashou/features/category/domain/category.dart";
+import "package:tabemashou/features/category/domain/category_repository.dart";
 
 /// CategoryRepositoryImpl: Implementation of CategoryRepository interface
 class CategoryRepositoryImpl implements CategoryRepository {

@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:tabemashou/core/utils/log/logger.dart";
-import "package:tabemashou/domain/category/category.dart";
+import "package:tabemashou/features/category/domain/category.dart";
 
 /// CategorySettingListTile: Widget for displaying a category in a list
 class CategorySettingListTile extends StatelessWidget {
