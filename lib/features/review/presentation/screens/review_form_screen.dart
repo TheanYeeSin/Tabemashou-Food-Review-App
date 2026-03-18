@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:tabemashou/presentation/widgets/review/review_form/review_form.dart";
+import "package:tabemashou/features/review/presentation/widgets/review_form/review_form.dart";
 
 class ReviewFormScreen extends StatelessWidget {
   const ReviewFormScreen({super.key});

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:tabemashou/core/type/review.dart";
-import "package:tabemashou/domain/review/review.dart";
-import "package:tabemashou/domain/review/review_repository.dart";
+import "package:tabemashou/features/review/domain/review.dart";
+import "package:tabemashou/features/review/domain/review_repository.dart";
 
 class ReviewProvider extends ChangeNotifier {
   final ReviewRepository repository;

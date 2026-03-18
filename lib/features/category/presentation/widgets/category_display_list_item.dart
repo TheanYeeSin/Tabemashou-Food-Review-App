@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:tabemashou/features/category/domain/category.dart";
-import "package:tabemashou/presentation/screens/reviews/reviews_screen.dart";
+import "package:tabemashou/features/review/presentation/screens/reviews_screen.dart";
 
 class CategoryDisplayListItem extends StatelessWidget {
   final Category category;

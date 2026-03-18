@@ -1,7 +1,7 @@
 import "package:sqflite/sqflite.dart";
 import "package:tabemashou/core/constants/database.dart";
 import "package:tabemashou/core/database/app_database.dart";
-import "package:tabemashou/domain/review/review.dart";
+import "package:tabemashou/features/review/domain/review.dart";
 
 class ReviewLocalSource {
   // ----- Read -----

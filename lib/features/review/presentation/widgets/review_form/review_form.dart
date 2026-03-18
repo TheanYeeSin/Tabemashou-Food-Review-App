@@ -4,12 +4,12 @@ import "package:flutter/material.dart";
 import "package:image_picker/image_picker.dart";
 import "package:intl/intl.dart";
 import "package:tabemashou/core/validators/text_validators.dart";
-import "package:tabemashou/domain/review/review.dart";
-import "package:tabemashou/presentation/widgets/review/review_form/review_form_chip_input.dart";
-import "package:tabemashou/presentation/widgets/review/review_form/review_form_field.dart";
-import "package:tabemashou/presentation/widgets/review/review_form/review_form_section.dart";
-import "package:tabemashou/presentation/widgets/review/review_form/review_form_switch.dart";
-import "package:tabemashou/presentation/widgets/review/review_form/review_form_visit_dialog.dart";
+import "package:tabemashou/features/review/domain/review.dart";
+import "package:tabemashou/features/review/presentation/widgets/review_form/review_form_chip_input.dart";
+import "package:tabemashou/features/review/presentation/widgets/review_form/review_form_field.dart";
+import "package:tabemashou/features/review/presentation/widgets/review_form/review_form_section.dart";
+import "package:tabemashou/features/review/presentation/widgets/review_form/review_form_switch.dart";
+import "package:tabemashou/features/review/presentation/widgets/review_form/review_form_visit_dialog.dart";
 
 class ReviewForm extends StatefulWidget {
   final Review? initialReview;

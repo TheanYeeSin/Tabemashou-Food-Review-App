@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "package:tabemashou/core/type/review.dart";
-import "package:tabemashou/presentation/providers/review_provider.dart";
+import "package:tabemashou/features/review/presentation/providers/review_provider.dart";
 import "package:tabemashou/presentation/widgets/common/empty_placeholder_view.dart";
-import "package:tabemashou/presentation/widgets/review/review_config_bottom_sheet/review_config_bottom_sheet.dart";
-import "package:tabemashou/presentation/widgets/review/review_display_card_item.dart";
-import "package:tabemashou/presentation/widgets/review/review_display_grid_item.dart";
-import "package:tabemashou/presentation/widgets/review/review_display_list_item.dart";
+import "package:tabemashou/features/review/presentation/widgets/review_config_bottom_sheet/review_config_bottom_sheet.dart";
+import "package:tabemashou/features/review/presentation/widgets/review_display_card_item.dart";
+import "package:tabemashou/features/review/presentation/widgets/review_display_grid_item.dart";
+import "package:tabemashou/features/review/presentation/widgets/review_display_list_item.dart";
 
 class ReviewsScreen extends StatefulWidget {
   final String title;

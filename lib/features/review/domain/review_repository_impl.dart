@@ -1,6 +1,6 @@
-import "package:tabemashou/data/review/review_local_source.dart";
-import "package:tabemashou/domain/review/review.dart";
-import "package:tabemashou/domain/review/review_repository.dart";
+import "package:tabemashou/features/review/data/review_local_source.dart";
+import "package:tabemashou/features/review/domain/review.dart";
+import "package:tabemashou/features/review/domain/review_repository.dart";
 
 class ReviewRepositoryImpl implements ReviewRepository {
   final ReviewLocalSource local;

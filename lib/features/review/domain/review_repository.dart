@@ -1,4 +1,4 @@
-import "package:tabemashou/domain/review/review.dart";
+import "package:tabemashou/features/review/domain/review.dart";
 
 abstract class ReviewRepository {
   // ----- Read -----

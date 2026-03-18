@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "package:tabemashou/core/type/review.dart";
-import "package:tabemashou/presentation/providers/review_provider.dart";
+import "package:tabemashou/features/review/presentation/providers/review_provider.dart";
 
 class ReviewConfigLayoutView extends StatefulWidget {
   const ReviewConfigLayoutView({super.key});

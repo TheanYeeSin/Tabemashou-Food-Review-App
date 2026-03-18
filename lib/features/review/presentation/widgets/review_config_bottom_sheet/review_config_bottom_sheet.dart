@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:tabemashou/presentation/widgets/review/review_config_bottom_sheet/review_config_layout_view.dart";
+import "package:tabemashou/features/review/presentation/widgets/review_config_bottom_sheet/review_config_layout_view.dart";
 
 enum ConfigView { filter, sort, layout }
 
