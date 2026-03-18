@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:tabemashou/core/constants/path.dart";
-import "package:tabemashou/domain/category/category.dart";
+import "package:tabemashou/features/category/domain/category.dart";
 import "package:tabemashou/presentation/widgets/common/empty_placeholder_view.dart";
 
 class CategoryCarousel extends StatelessWidget {

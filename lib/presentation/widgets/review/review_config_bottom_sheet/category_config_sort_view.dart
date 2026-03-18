@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "package:tabemashou/core/type/category.dart";
-import "package:tabemashou/presentation/providers/category_provider.dart";
+import "package:tabemashou/features/category/presentation/providers/category_provider.dart";
 
 class CategoryConfigSortView extends StatefulWidget {
   const CategoryConfigSortView({super.key});

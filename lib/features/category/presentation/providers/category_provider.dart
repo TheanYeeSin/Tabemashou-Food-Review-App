@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:tabemashou/core/type/category.dart";
 import "package:tabemashou/core/utils/sort/sort_utils.dart";
-import "package:tabemashou/domain/category/category.dart";
-import "package:tabemashou/domain/category/category_repository.dart";
+import "package:tabemashou/features/category/domain/category.dart";
+import "package:tabemashou/features/category/domain/category_repository.dart";
 
 class CategoryProvider extends ChangeNotifier {
   final CategoryRepository repository;

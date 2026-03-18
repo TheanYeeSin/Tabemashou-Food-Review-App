@@ -1,4 +1,4 @@
-import "package:tabemashou/domain/category/category.dart";
+import "package:tabemashou/features/category/domain/category.dart";
 
 /// CategoryRepository: Abstract class for Category repository
 abstract class CategoryRepository {

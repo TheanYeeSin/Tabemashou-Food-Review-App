@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import "package:tabemashou/presentation/widgets/category/category_config_bottom_sheet/category_config_layout_view.dart";
-import "package:tabemashou/presentation/widgets/category/category_config_bottom_sheet/category_config_sort_view.dart";
+import "package:tabemashou/features/category/presentation/widgets/category_config_bottom_sheet/category_config_layout_view.dart";
+import "package:tabemashou/features/category/presentation/widgets/category_config_bottom_sheet/category_config_sort_view.dart";
 
 enum ConfigView { sort, layout }
 

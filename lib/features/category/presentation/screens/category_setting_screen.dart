@@ -1,11 +1,11 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "package:tabemashou/core/utils/log/logger.dart";
-import "package:tabemashou/domain/category/category.dart";
-import "package:tabemashou/presentation/providers/category_provider.dart";
-import "package:tabemashou/presentation/widgets/category/category_dialog.dart";
-import "package:tabemashou/presentation/widgets/category/category_setting_list_tile.dart";
-import "package:tabemashou/presentation/widgets/category/delete_category_dialog.dart";
+import "package:tabemashou/features/category/domain/category.dart";
+import "package:tabemashou/features/category/presentation/providers/category_provider.dart";
+import "package:tabemashou/features/category/presentation/widgets/category_dialog.dart";
+import "package:tabemashou/features/category/presentation/widgets/category_setting_list_tile.dart";
+import "package:tabemashou/features/category/presentation/widgets/delete_category_dialog.dart";
 import "package:tabemashou/presentation/widgets/common/empty_placeholder_view.dart";
 
 /// CategorySettingScreen: Screen for managing categories

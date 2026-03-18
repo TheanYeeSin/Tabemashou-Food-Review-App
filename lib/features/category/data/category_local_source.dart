@@ -1,7 +1,7 @@
 import "package:sqflite/sqflite.dart";
 import "package:tabemashou/core/constants/database.dart";
 import "package:tabemashou/core/database/app_database.dart";
-import "package:tabemashou/domain/category/category.dart";
+import "package:tabemashou/features/category/domain/category.dart";
 
 /// CategoryLocalSource: Handles local database operations
 class CategoryLocalSource {
