@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:tabemashou/domain/checklist_item/checklist_item.dart";
+import "package:tabemashou/features/checklist/domain/checklist_item.dart";
 
 class ChecklistDisplayListItem extends StatefulWidget {
   final ChecklistItem checklistItem;

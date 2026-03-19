@@ -1,7 +1,7 @@
 import "package:sqflite/sqflite.dart";
 import "package:tabemashou/core/constants/database.dart";
 import "package:tabemashou/core/database/app_database.dart";
-import "package:tabemashou/domain/checklist_item/checklist_item.dart";
+import "package:tabemashou/features/checklist/domain/checklist_item.dart";
 
 class ChecklistItemLocalSource {
   // ----- Read -----

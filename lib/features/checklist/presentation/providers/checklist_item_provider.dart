@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:tabemashou/core/type/checklist.dart";
-import "package:tabemashou/domain/checklist_item/checklist_item.dart";
-import "package:tabemashou/domain/checklist_item/checklist_item_repository.dart";
+import "package:tabemashou/features/checklist/domain/checklist_item.dart";
+import "package:tabemashou/features/checklist/domain/checklist_item_repository.dart";
 
 class ChecklistItemProvider extends ChangeNotifier {
   final ChecklistItemRepository repository;

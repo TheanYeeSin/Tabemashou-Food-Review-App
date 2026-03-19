@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:tabemashou/core/constants/path.dart";
 import "package:tabemashou/core/type/common.dart";
 import "package:tabemashou/presentation/screens/tabs/categories_screen.dart";
-import "package:tabemashou/presentation/screens/tabs/home_checklist_screen.dart";
+import "package:tabemashou/features/checklist/presentation/screens/home_checklist_screen.dart";
 import "package:tabemashou/presentation/screens/tabs/home_screen.dart";
 import "package:tabemashou/presentation/screens/tabs/more_screen.dart";
 import "package:tabemashou/presentation/screens/tabs/random_restaurant_screen.dart";

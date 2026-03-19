@@ -1,6 +1,6 @@
-import "package:tabemashou/data/checklist_item/checklist_item_local_source.dart";
-import "package:tabemashou/domain/checklist_item/checklist_item.dart";
-import "package:tabemashou/domain/checklist_item/checklist_item_repository.dart";
+import "package:tabemashou/features/checklist/data/checklist_item_local_source.dart";
+import "package:tabemashou/features/checklist/domain/checklist_item.dart";
+import "package:tabemashou/features/checklist/domain/checklist_item_repository.dart";
 
 class ChecklistItemRepositoryImpl implements ChecklistItemRepository {
   final ChecklistItemLocalSource local;

@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:tabemashou/domain/checklist_item/checklist_item.dart";
+import "package:tabemashou/features/checklist/domain/checklist_item.dart";
 import "package:tabemashou/presentation/widgets/common/empty_placeholder_view.dart";
 
 class ChecklistPreview extends StatelessWidget {

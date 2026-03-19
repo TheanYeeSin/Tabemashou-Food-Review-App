@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:tabemashou/core/validators/text_validators.dart";
-import "package:tabemashou/domain/checklist_item/checklist_item.dart";
+import "package:tabemashou/features/checklist/domain/checklist_item.dart";
 
 /// ChecklistDialog: Dialog for adding/editing a checklist item
 class ChecklistDialog extends StatefulWidget {

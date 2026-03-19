@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "package:tabemashou/core/type/checklist.dart";
-import "package:tabemashou/presentation/providers/checklist_item_provider.dart";
+import "package:tabemashou/features/checklist/presentation/providers/checklist_item_provider.dart";
 
 class ChecklistConfigFilterView extends StatelessWidget {
   const ChecklistConfigFilterView({super.key});

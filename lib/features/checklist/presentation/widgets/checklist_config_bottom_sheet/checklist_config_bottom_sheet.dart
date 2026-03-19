@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:tabemashou/presentation/widgets/checklist/checklist_config_bottom_sheet/checklist_config_filter_view.dart";
+import "package:tabemashou/features/checklist/presentation/widgets/checklist_config_bottom_sheet/checklist_config_filter_view.dart";
 
 enum ConfigView { filter, sort, layout }
 
