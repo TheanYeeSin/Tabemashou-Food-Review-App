@@ -6,7 +6,7 @@ import "package:tabemashou/features/checklist/presentation/screens/home_checklis
 import "package:tabemashou/presentation/screens/tabs/home_screen.dart";
 import "package:tabemashou/presentation/screens/tabs/more_screen.dart";
 import "package:tabemashou/presentation/screens/tabs/random_restaurant_screen.dart";
-import "package:tabemashou/presentation/widgets/common/custom_nav_bar.dart";
+import "package:tabemashou/core/widgets/custom_nav_bar.dart";
 
 class MainNavigatorScreen extends StatefulWidget {
   const MainNavigatorScreen({super.key});

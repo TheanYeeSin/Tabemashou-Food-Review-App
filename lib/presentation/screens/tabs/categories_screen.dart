@@ -9,7 +9,7 @@ import "package:tabemashou/features/category/presentation/widgets/category_displ
 import "package:tabemashou/features/category/presentation/widgets/category_display_list_item.dart";
 import "package:tabemashou/features/review/domain/review.dart";
 import "package:tabemashou/features/review/presentation/providers/review_provider.dart";
-import "package:tabemashou/presentation/widgets/common/empty_placeholder_view.dart";
+import "package:tabemashou/core/widgets/empty_placeholder_view.dart";
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});

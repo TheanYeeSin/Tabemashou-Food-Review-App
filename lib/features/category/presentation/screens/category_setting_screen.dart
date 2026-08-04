@@ -6,7 +6,7 @@ import "package:tabemashou/features/category/presentation/providers/category_pro
 import "package:tabemashou/features/category/presentation/widgets/category_dialog.dart";
 import "package:tabemashou/features/category/presentation/widgets/category_setting_list_tile.dart";
 import "package:tabemashou/features/category/presentation/widgets/delete_category_dialog.dart";
-import "package:tabemashou/presentation/widgets/common/empty_placeholder_view.dart";
+import "package:tabemashou/core/widgets/empty_placeholder_view.dart";
 
 /// CategorySettingScreen: Screen for managing categories
 class CategorySettingScreen extends StatefulWidget {

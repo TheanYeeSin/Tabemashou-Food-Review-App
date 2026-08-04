@@ -7,7 +7,7 @@ import "package:tabemashou/features/checklist/presentation/widgets/checklist_con
 import "package:tabemashou/features/checklist/presentation/widgets/checklist_dialog.dart";
 import "package:tabemashou/features/checklist/presentation/widgets/checklist_display_list_item.dart";
 import "package:tabemashou/features/checklist/presentation/widgets/delete_checklist_item_dialog.dart";
-import "package:tabemashou/presentation/widgets/common/empty_placeholder_view.dart";
+import "package:tabemashou/core/widgets/empty_placeholder_view.dart";
 
 class HomeChecklistScreen extends StatefulWidget {
   const HomeChecklistScreen({super.key});
