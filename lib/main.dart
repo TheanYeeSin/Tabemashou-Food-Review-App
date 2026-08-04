@@ -19,7 +19,7 @@ import "package:tabemashou/presentation/screens/about_screen.dart";
 import "package:tabemashou/presentation/screens/main_navigator_screen.dart";
 import "package:tabemashou/presentation/screens/settings/settings_screen.dart";
 import "package:tabemashou/presentation/screens/tabs/categories_screen.dart";
-import "package:tabemashou/presentation/screens/tabs/home_screen.dart";
+import "package:tabemashou/features/home/screens/home_screen.dart";
 import "package:tabemashou/presentation/screens/tabs/more_screen.dart";
 import "package:tabemashou/presentation/screens/tabs/random_restaurant_screen.dart";
 
