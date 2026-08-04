@@ -3,10 +3,9 @@ import "package:provider/provider.dart";
 import "package:tabemashou/core/constants/path.dart";
 import "package:tabemashou/core/theme/theme.dart";
 import "package:tabemashou/core/utils/log/logger.dart";
-import "package:tabemashou/features/category/data/category_local_source.dart";
-import "package:tabemashou/features/category/domain/category_repository_impl.dart";
-import "package:tabemashou/features/category/presentation/providers/category_provider.dart";
-import "package:tabemashou/features/category/presentation/screens/category_setting_screen.dart";
+import "package:tabemashou/features/category/category_repository.dart";
+import "package:tabemashou/features/category/providers/category_provider.dart";
+import "package:tabemashou/features/category/screens/category_setting_screen.dart";
 import "package:tabemashou/features/checklist/data/checklist_item_local_source.dart";
 import "package:tabemashou/features/checklist/domain/checklist_item_repository_impl.dart";
 import "package:tabemashou/features/checklist/presentation/providers/checklist_item_provider.dart";
@@ -31,8 +30,7 @@ void main() async {
   LoggerService.logInfo("App started");
 
   // ----- Category Source -----
-  final categoryLocalSource = CategoryLocalSource();
-  final categoryRepository = CategoryRepositoryImpl(local: categoryLocalSource);
+  final categoryRepository = CategoryRepository();
 
   // ----- Checklist Item Source -----
   final checklistLocalSource = ChecklistItemLocalSource();

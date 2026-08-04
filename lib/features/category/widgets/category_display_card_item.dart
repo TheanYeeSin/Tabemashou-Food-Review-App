@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:tabemashou/features/category/domain/category.dart";
+import "package:tabemashou/features/category/models/category.dart";
 import "package:tabemashou/features/review/presentation/screens/reviews_screen.dart";
 
 class CategoryDisplayCardItem extends StatelessWidget {

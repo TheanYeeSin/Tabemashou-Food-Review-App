@@ -1,28 +1,26 @@
 import "package:sqflite/sqflite.dart";
 import "package:tabemashou/core/constants/database.dart";
-import "package:tabemashou/features/category/domain/category.dart";
+import "package:tabemashou/features/category/models/category.dart";
 import "package:tabemashou/services/database_service.dart";
 
-/// CategoryLocalSource: Handles local database operations
-class CategoryLocalSource {
+class CategoryRepository {
   // ----- Read -----
   Future<List<Category>> getAll() async {
     final db = await DatabaseService().database;
     final result = await db.query(TABLE_CATEGORY, orderBy: "orderIndex ASC");
-
     return result.map(Category.fromMap).toList();
   }
 
   // ----- Create -----
   Future<void> create(final Category category) async {
     final db = await DatabaseService().database;
-    final categoryWithTimestamp = category.copyWith(
+    final withTimestamp = category.copyWith(
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
     );
     await db.insert(
       TABLE_CATEGORY,
-      categoryWithTimestamp.toMap(),
+      withTimestamp.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
@@ -30,10 +28,10 @@ class CategoryLocalSource {
   // ----- Update -----
   Future<void> update(final Category category) async {
     final db = await DatabaseService().database;
-    final categoryWithTimestamp = category.copyWith(updatedAt: DateTime.now());
+    final withTimestamp = category.copyWith(updatedAt: DateTime.now());
     await db.update(
       TABLE_CATEGORY,
-      categoryWithTimestamp.toMap(),
+      withTimestamp.toMap(),
       where: "id = ?",
       whereArgs: [category.id],
       conflictAlgorithm: ConflictAlgorithm.replace,
