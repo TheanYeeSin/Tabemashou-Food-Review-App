@@ -1,12 +1,12 @@
 import "package:sqflite/sqflite.dart";
 import "package:tabemashou/core/constants/database.dart";
-import "package:tabemashou/core/database/app_database.dart";
 import "package:tabemashou/features/review/domain/review.dart";
+import "package:tabemashou/services/database_service.dart";
 
 class ReviewLocalSource {
   // ----- Read -----
   Future<List<Review>> getAll() async {
-    final db = await AppDatabase().database;
+    final db = await DatabaseService().database;
     final result = await db.query(TABLE_REVIEW, orderBy: "id DESC");
 
     final List<Review> reviews = [];
@@ -46,7 +46,7 @@ class ReviewLocalSource {
 
   // ----- Create -----
   Future<int> create(final Review review) async {
-    final db = await AppDatabase().database;
+    final db = await DatabaseService().database;
 
     final itemWithTimestamp = review.copyWith(
       createdAt: DateTime.now(),

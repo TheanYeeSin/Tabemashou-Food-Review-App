@@ -1,12 +1,12 @@
 import "package:sqflite/sqflite.dart";
 import "package:tabemashou/core/constants/database.dart";
 
-/// AppDatabase: Handle database initialization
-class AppDatabase {
+/// DatabaseService: Handle database initialization
+class DatabaseService {
   // ----- Singleton setup -----
-  static final AppDatabase _instance = AppDatabase._internal();
-  factory AppDatabase() => _instance;
-  AppDatabase._internal();
+  static final DatabaseService _instance = DatabaseService._internal();
+  factory DatabaseService() => _instance;
+  DatabaseService._internal();
 
   // ----- Database instance -----
   Database? _db;

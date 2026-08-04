@@ -1,13 +1,13 @@
 import "package:sqflite/sqflite.dart";
 import "package:tabemashou/core/constants/database.dart";
-import "package:tabemashou/core/database/app_database.dart";
 import "package:tabemashou/features/category/domain/category.dart";
+import "package:tabemashou/services/database_service.dart";
 
 /// CategoryLocalSource: Handles local database operations
 class CategoryLocalSource {
   // ----- Read -----
   Future<List<Category>> getAll() async {
-    final db = await AppDatabase().database;
+    final db = await DatabaseService().database;
     final result = await db.query(TABLE_CATEGORY, orderBy: "orderIndex ASC");
 
     return result.map(Category.fromMap).toList();
@@ -15,7 +15,7 @@ class CategoryLocalSource {
 
   // ----- Create -----
   Future<void> create(final Category category) async {
-    final db = await AppDatabase().database;
+    final db = await DatabaseService().database;
     final categoryWithTimestamp = category.copyWith(
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
@@ -29,7 +29,7 @@ class CategoryLocalSource {
 
   // ----- Update -----
   Future<void> update(final Category category) async {
-    final db = await AppDatabase().database;
+    final db = await DatabaseService().database;
     final categoryWithTimestamp = category.copyWith(updatedAt: DateTime.now());
     await db.update(
       TABLE_CATEGORY,
@@ -41,7 +41,7 @@ class CategoryLocalSource {
   }
 
   Future<void> batchUpdate(final List<Category> categories) async {
-    final db = await AppDatabase().database;
+    final db = await DatabaseService().database;
     await db.transaction((final txn) async {
       for (final category in categories) {
         await txn.update(
@@ -57,12 +57,12 @@ class CategoryLocalSource {
 
   // ----- Delete -----
   Future<void> delete(final int id) async {
-    final db = await AppDatabase().database;
+    final db = await DatabaseService().database;
     await db.delete(TABLE_CATEGORY, where: "id = ?", whereArgs: [id]);
   }
 
   Future<void> batchDelete(final List<int> ids) async {
-    final db = await AppDatabase().database;
+    final db = await DatabaseService().database;
     await db.transaction((final txn) async {
       for (final id in ids) {
         await txn.delete(TABLE_CATEGORY, where: "id = ?", whereArgs: [id]);
