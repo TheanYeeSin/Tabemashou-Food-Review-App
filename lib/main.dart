@@ -5,11 +5,12 @@ import "package:tabemashou/core/theme/theme.dart";
 import "package:tabemashou/core/utils/log/logger.dart";
 import "package:tabemashou/features/category/category_repository.dart";
 import "package:tabemashou/features/category/providers/category_provider.dart";
+import "package:tabemashou/features/category/screens/categories_screen.dart";
 import "package:tabemashou/features/category/screens/category_setting_screen.dart";
-import "package:tabemashou/features/checklist/data/checklist_item_local_source.dart";
-import "package:tabemashou/features/checklist/domain/checklist_item_repository_impl.dart";
-import "package:tabemashou/features/checklist/presentation/providers/checklist_item_provider.dart";
-import "package:tabemashou/features/checklist/presentation/screens/home_checklist_screen.dart";
+import "package:tabemashou/features/checklist/checklist_item_repository.dart";
+import "package:tabemashou/features/checklist/providers/checklist_item_provider.dart";
+import "package:tabemashou/features/checklist/screens/home_checklist_screen.dart";
+import "package:tabemashou/features/home/screens/home_screen.dart";
 import "package:tabemashou/features/review/data/review_local_source.dart";
 import "package:tabemashou/features/review/domain/review_repository_impl.dart";
 import "package:tabemashou/features/review/presentation/providers/review_provider.dart";
@@ -17,8 +18,6 @@ import "package:tabemashou/features/review/presentation/screens/review_form_scre
 import "package:tabemashou/presentation/screens/about_screen.dart";
 import "package:tabemashou/presentation/screens/main_navigator_screen.dart";
 import "package:tabemashou/presentation/screens/settings/settings_screen.dart";
-import "package:tabemashou/features/category/screens/categories_screen.dart";
-import "package:tabemashou/features/home/screens/home_screen.dart";
 import "package:tabemashou/presentation/screens/tabs/more_screen.dart";
 import "package:tabemashou/presentation/screens/tabs/random_restaurant_screen.dart";
 
@@ -33,10 +32,7 @@ void main() async {
   final categoryRepository = CategoryRepository();
 
   // ----- Checklist Item Source -----
-  final checklistLocalSource = ChecklistItemLocalSource();
-  final checklistRepository = ChecklistItemRepositoryImpl(
-    local: checklistLocalSource,
-  );
+  final checklistItemRepository = ChecklistItemRepository();
 
   // // ----- Review Source -----
   final reviewLocalSource = ReviewLocalSource();
@@ -52,7 +48,7 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (_) =>
-              ChecklistItemProvider(repository: checklistRepository)
+              ChecklistItemProvider(repository: checklistItemRepository)
                 ..loadChecklistItems(),
         ),
         ChangeNotifierProvider(

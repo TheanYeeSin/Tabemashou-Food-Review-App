@@ -1,9 +1,9 @@
 import "package:sqflite/sqflite.dart";
 import "package:tabemashou/core/constants/database.dart";
-import "package:tabemashou/features/checklist/domain/checklist_item.dart";
+import "package:tabemashou/features/checklist/models/checklist_item.dart";
 import "package:tabemashou/services/database_service.dart";
 
-class ChecklistItemLocalSource {
+class ChecklistItemRepository {
   // ----- Read -----
   Future<List<ChecklistItem>> getAll() async {
     final db = await DatabaseService().database;

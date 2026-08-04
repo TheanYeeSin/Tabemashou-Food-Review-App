@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "package:tabemashou/core/utils/log/logger.dart";
-import "package:tabemashou/features/checklist/domain/checklist_item.dart";
-import "package:tabemashou/features/checklist/presentation/providers/checklist_item_provider.dart";
-import "package:tabemashou/features/checklist/presentation/widgets/checklist_config_bottom_sheet/checklist_config_bottom_sheet.dart";
-import "package:tabemashou/features/checklist/presentation/widgets/checklist_dialog.dart";
-import "package:tabemashou/features/checklist/presentation/widgets/checklist_display_list_item.dart";
-import "package:tabemashou/features/checklist/presentation/widgets/delete_checklist_item_dialog.dart";
+import "package:tabemashou/features/checklist/models/checklist_item.dart";
+import "package:tabemashou/features/checklist/providers/checklist_item_provider.dart";
+import "package:tabemashou/features/checklist/widgets/checklist_config_bottom_sheet/checklist_config_bottom_sheet.dart";
+import "package:tabemashou/features/checklist/widgets/checklist_dialog.dart";
+import "package:tabemashou/features/checklist/widgets/checklist_display_list_item.dart";
+import "package:tabemashou/features/checklist/widgets/delete_checklist_item_dialog.dart";
 import "package:tabemashou/core/widgets/empty_placeholder_view.dart";
 
 class HomeChecklistScreen extends StatefulWidget {
