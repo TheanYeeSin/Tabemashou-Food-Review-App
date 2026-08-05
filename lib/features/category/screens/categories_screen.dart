@@ -7,8 +7,8 @@ import "package:tabemashou/features/category/widgets/category_config_bottom_shee
 import "package:tabemashou/features/category/widgets/category_display_card_item.dart";
 import "package:tabemashou/features/category/widgets/category_display_grid_item.dart";
 import "package:tabemashou/features/category/widgets/category_display_list_item.dart";
-import "package:tabemashou/features/review/domain/review.dart";
-import "package:tabemashou/features/review/presentation/providers/review_provider.dart";
+import "package:tabemashou/features/review/models/review.dart";
+import "package:tabemashou/features/review/providers/review_provider.dart";
 import "package:tabemashou/core/widgets/empty_placeholder_view.dart";
 
 class CategoriesScreen extends StatefulWidget {

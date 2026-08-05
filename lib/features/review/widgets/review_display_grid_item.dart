@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:tabemashou/features/review/domain/review.dart";
+import "package:tabemashou/features/review/models/review.dart";
 
 class ReviewDisplayGridItem extends StatelessWidget {
   final Review review;

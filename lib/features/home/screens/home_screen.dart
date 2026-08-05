@@ -4,7 +4,7 @@ import "package:tabemashou/core/constants/path.dart";
 import "package:tabemashou/core/type/checklist.dart";
 import "package:tabemashou/features/category/providers/category_provider.dart";
 import "package:tabemashou/features/category/widgets/category_carousel.dart";
-import "package:tabemashou/features/review/presentation/widgets/recent_reviews_list.dart";
+import "package:tabemashou/features/review/widgets/recent_reviews_list.dart";
 import "package:tabemashou/features/checklist/providers/checklist_item_provider.dart";
 import "package:tabemashou/features/checklist/widgets/checklist_preview.dart";
 import "package:tabemashou/core/widgets/section_title.dart";

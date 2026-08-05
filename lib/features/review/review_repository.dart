@@ -1,9 +1,9 @@
 import "package:sqflite/sqflite.dart";
 import "package:tabemashou/core/constants/database.dart";
-import "package:tabemashou/features/review/domain/review.dart";
+import "package:tabemashou/features/review/models/review.dart";
 import "package:tabemashou/services/database_service.dart";
 
-class ReviewLocalSource {
+class ReviewRepository {
   // ----- Read -----
   Future<List<Review>> getAll() async {
     final db = await DatabaseService().database;

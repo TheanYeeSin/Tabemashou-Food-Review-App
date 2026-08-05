@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import "package:tabemashou/features/review/domain/review.dart";
-import "package:tabemashou/features/review/presentation/widgets/review_form/review_form_chip_input.dart";
+import "package:tabemashou/features/review/models/review.dart";
+import "package:tabemashou/features/review/widgets/review_form/review_form_chip_input.dart";
 
 class ReviewFormVisitDialog extends StatefulWidget {
   const ReviewFormVisitDialog({super.key});
