@@ -13,13 +13,13 @@ import "package:tabemashou/features/checklist/providers/checklist_item_provider.
 import "package:tabemashou/features/checklist/screens/home_checklist_screen.dart";
 import "package:tabemashou/features/home/screens/home_screen.dart";
 import "package:tabemashou/features/more/screens/more_screen.dart";
+import "package:tabemashou/features/random_restaurant/screens/random_restaurant_screen.dart";
 import "package:tabemashou/features/review/data/review_local_source.dart";
 import "package:tabemashou/features/review/domain/review_repository_impl.dart";
 import "package:tabemashou/features/review/presentation/providers/review_provider.dart";
 import "package:tabemashou/features/review/presentation/screens/review_form_screen.dart";
 import "package:tabemashou/presentation/screens/main_navigator_screen.dart";
 import "package:tabemashou/presentation/screens/settings/settings_screen.dart";
-import "package:tabemashou/presentation/screens/tabs/random_restaurant_screen.dart";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
