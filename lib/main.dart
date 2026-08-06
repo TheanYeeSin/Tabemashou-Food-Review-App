@@ -18,7 +18,7 @@ import "package:tabemashou/features/review/providers/review_provider.dart";
 import "package:tabemashou/features/review/review_repository.dart";
 import "package:tabemashou/features/review/screens/review_form_screen.dart";
 import "package:tabemashou/features/settings/screens/settings_screen.dart";
-import "package:tabemashou/presentation/screens/main_navigator_screen.dart";
+import "package:tabemashou/shell/main_navigator_screen.dart";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
