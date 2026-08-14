@@ -48,7 +48,10 @@ const TABLE_CHECKLIST_ITEM_CREATE_SQL =
     CREATE TABLE $TABLE_CHECKLIST_ITEM (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
-      isChecked INTEGER NOT NULL,
+      isChecked INTEGER NOT NULL DEFAULT 0,
+      latitude REAL,
+      longitude REAL,
+      address TEXT,
       createdAt TEXT NOT NULL,
       updatedAt TEXT NOT NULL)
     """;
